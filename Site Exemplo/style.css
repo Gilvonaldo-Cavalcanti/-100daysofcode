@@ -1,0 +1,55 @@
+
+.principal {
+    height: 400px !important;
+}
+
+#quem-somos {
+    height: 400px !important;
+}
+
+.header {
+    padding: 30px;
+    text-align: center;
+    background: white;
+}
+.header h1 {
+    font-size: 50px;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.card:hover {
+
+    -webkit-box-shadow: -1px 9px 40px rgba(0,0,0,0.75);
+    -moz-box-sadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+
+}
+
+
+/* Rodapé */
+.footer {
+
+    padding: 10px;
+    text-align: center;
+    background: #3f3838;
+    margin-top: 0px;
+    color: #ddd;
+}
