@@ -4,12 +4,6 @@
 
 * [Log - clique aqui para ver meu progresso](log.md)
 
-## Traduções
-
-[বাংলা](../bn/README.md) - [中文](../ch/README.md) - [deutsch](../de/README.md) - [español](../es/README.md) – [français](../fr/FAQ-fr.md) – [日本語](../ja/README.md) - [한국어](../ko/README-ko.md) – [norsk](../no/README.md) –  [polski](../pl/README.md) - [português do Brasil](../pt-br/LEIAME.md) - [русский](../ru/README-ru.md) – [українська](../ua/README-ua.md)
-
-Caso você queira ajudar na tradução do conteúdo/regras para seu idioma, mande um pull request (ou mande uma DM no Twitter para @ka11away), adicionando uma subpasta na pasta chamada 'intl' com os arquivos traduzidos.
-
 ## Se você decidir participar:
 
 0.  Conheça [o Site Oficial](http://100daysofcode.com/) para o movimento do #100DaysOfCode. Conecte-se com outras pessoas na plataforma de sua escolha a partir dessa lista: www.100DaysOfCode.com/connect
