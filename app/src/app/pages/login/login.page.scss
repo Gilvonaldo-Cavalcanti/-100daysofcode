@@ -1,25 +1,22 @@
 .container {
-    width: 100%;
-    height: 100%;
     position: absolute;
-    background: black;
-    
-}
-
-.container-segment {
-    position: relative;
     left: 0;
     right: 0;
     margin: 0 auto;
-    z-index: 2;
-    background: #fff;
+ 
+
+    .container-segment {
+        position: relative;
+        margin-top: 0;
+        z-index: 2;        
+    }
+
+    ion-slides {
+        margin-top: 40%;
+       
+    }
 }
 
-ion-slides {
-    height: 100%;
-
-    
-}
 .slide-inner {
     width: 75%;
     color: #fff;
@@ -33,9 +30,7 @@ ion-slides {
         ion-input {
             color: #fff;
         }
-        ion-button {
-            
-        }
+        
     }
 
 }
