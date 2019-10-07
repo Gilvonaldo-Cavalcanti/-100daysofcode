@@ -2,10 +2,7 @@
 
 ## Conteúdo
 
-* [Regras](regras.md)
 * [Log - clique aqui para ver meu progresso](log.md)
-* [LEIA-ME](LEIAME.md)
-* [Recursos](recursos.md)
 
 ## Traduções
 
