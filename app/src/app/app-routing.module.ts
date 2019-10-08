@@ -5,8 +5,9 @@ import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule', canActivate : [AuthGuard] },
-  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate : [LoginGuard] },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [LoginGuard] },
+  { path: 'home', loadChildren: './tabs-page/tabs/tabs.module', canActivate: [AuthGuard], }
+
 ];
 
 @NgModule({
