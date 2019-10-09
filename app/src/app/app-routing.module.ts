@@ -3,11 +3,12 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginGuard } from './guards/login.guard';
 
-const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [LoginGuard] },
-  { path: 'home', loadChildren: './tabs-page/tabs/tabs.module', canActivate: [AuthGuard], }
 
+const routes: Routes = [
+
+  { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' , canActivate: [AuthGuard] },
+  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [LoginGuard] },
+  
 ];
 
 @NgModule({
