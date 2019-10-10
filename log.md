@@ -31,3 +31,11 @@
 **Comentários:** Centralização de divs e slide-element.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 005: 08 de Outubro de 2019
+
+**Progresso de hoje**: Adição de tabs e alteração de rotas.
+
+**Comentários:** Adição de tabs de navegação e alterações nas rotas do app. Enfrentei alguns bugs e dificuldades em combinar canactivate com router das tabs.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
