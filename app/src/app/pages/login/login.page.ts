@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,8 @@ export class LoginPage implements OnInit {
   constructor(
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     try {
       await this.authService.login(this.userLogin);
+      this.router.navigateByUrl("/", { skipLocationChange: true });
     } catch (error) {
       this.presentToast(error.message);
       console.error(error);
@@ -50,6 +53,7 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     try {
       await this.authService.register(this.userRegister);
+      this.router.navigateByUrl("/", { skipLocationChange: true });
     } catch (error) {
       this.presentToast(error.message);
       console.error(error);
