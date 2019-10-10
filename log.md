@@ -39,3 +39,17 @@
 **Comentários:** Adição de tabs de navegação e alterações nas rotas do app. Enfrentei alguns bugs e dificuldades em combinar canactivate com router das tabs.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 006: 09 de Outubro de 2019
+
+**Progresso de hoje**: Implementação do CRUD de treinos no app (ainda imcompleto é apenas o início).
+
+**Comentários:** Correção de um bug após o cadastro/login do usuário, ao redirecionar para a aba home do app, e início da implementação das tabs e CRUD de treinos(adição de interface, pages, service e configuração do database no firebase).
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+
+
+
+
+
