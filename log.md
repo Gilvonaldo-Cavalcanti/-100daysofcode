@@ -48,7 +48,13 @@
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
 
+### Dia 007: 10 de Outubro de 2019
 
+**Progresso de hoje**: Listagem de treinos, em ion-card, do BD Firebase.
+
+**Comentários:** Listagem de treinos, criação de pages e reorganização de abas em "treino", "progresso" e "avaliações", com icons correspondentes.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
 
 
 
