@@ -1,12 +1,48 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>treino</ion-title>
+    <ion-title>Adicionar Treino</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-tab-button vertical="bottom" horizontal="end" slot="fixed">
-        <ion-icon name="arrow-round-back"></ion-icon>
-    </ion-tab-button>
+
+  <ion-list>
+
+    <ion-item>
+      <ion-input type="text" [(ngModel)]="treino.nomeTreino" placeholder="Nome treino"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Dia da Semana</ion-label>
+      <ion-select placeholder="Select One">
+        <ion-select-option value="dom">Domingo</ion-select-option>
+        <ion-select-option value="seg">Segunda-Feira</ion-select-option>
+        <ion-select-option value="ter">Terça-Feira</ion-select-option>
+        <ion-select-option value="qua">Quarta-Feira</ion-select-option>
+        <ion-select-option value="qui">Quinta-Feira</ion-select-option>
+        <ion-select-option value="sex">Sexta-Feira</ion-select-option>
+      </ion-select>
+    </ion-item>
+
     
+
+  </ion-list>
+
+
+
 </ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+
+    <ion-button (click)="salvarTreino()" expand="block">
+      Salvar
+    </ion-button>
+
+  </ion-toolbar>
+
+</ion-footer>
