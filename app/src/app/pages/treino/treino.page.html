@@ -8,13 +8,10 @@
 </ion-header>
 
 <ion-content>
-
   <ion-list>
-
     <ion-item>
       <ion-input type="text" [(ngModel)]="treino.nomeTreino" placeholder="Nome treino"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label>Dia da Semana</ion-label>
       <ion-select placeholder="Dia">
@@ -26,24 +23,32 @@
         <ion-select-option value="sex">Sexta-Feira</ion-select-option>
       </ion-select>
     </ion-item>
-
   </ion-list>
 
   <ion-list lines="none">
     <form [formGroup]="myForm">
       <ion-item *ngFor="let control of myForm.controls | keyvalue">
-        <ion-input required type="text" [formControlName]="control.key" placeHolder="Nome"> 
-          <ion-item>
-            <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Quant.</ion-button>
-          </ion-item>  
-          </ion-input>
+        <ion-input required type="text" [formControlName]="control.key" placeHolder="Nome">
+        </ion-input>
         <ion-icon (click)="removeControl(control)" name="close-circle"></ion-icon>
       </ion-item>
     </form>
+
+    <ion-row text-center>
+      <ion-col size="4">
+        <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Quant.</ion-button>
+      </ion-col>
+      <ion-col size="4">Voltas</ion-col>
+      <ion-col size="4">Series</ion-col>
+    </ion-row>
+    <ion-row text-center>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4"></ion-col>
+      <ion-col size="4"></ion-col>
+    </ion-row>
+
   </ion-list>
-
   <ion-button expand="full" color="light" (click)="addControl()">Adicionar Exercício</ion-button>
-
 </ion-content>
 
 <ion-footer>
