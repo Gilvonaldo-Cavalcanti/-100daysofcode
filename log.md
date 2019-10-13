@@ -56,6 +56,11 @@
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
 
+### Dia 008: 11 de Outubro de 2019
 
+**Progresso de hoje**: Continuação da implementação da tab1 e tela de cadastro de treinos.
 
+**Comentários:** Adição de mais campos a tela de cadastro de treinos, menu superior esquerdo, para logout e continuação da implementação da tab1.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
 
