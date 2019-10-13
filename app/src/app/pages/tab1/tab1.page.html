@@ -6,8 +6,12 @@
     <ion-title>Minha Ficha de Treino</ion-title>
 
 
-      <ion-buttons slot="start">
-        <ion-menu-button autoHide="false"></ion-menu-button>
+      <ion-buttons slot="end">
+        <ion-menu-button autoHide="false">
+
+          <ion-icon name="log-out" (click)="sair()" [routerLink]="tabs"></ion-icon>
+
+        </ion-menu-button>
       </ion-buttons>
   </ion-toolbar>
 
@@ -32,13 +36,13 @@
 
       <ion-row style="border-bottom: groove;">
         <ion-col col-4>
-          <ion-label>header</ion-label>
+          <ion-label>Exercício</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>header</ion-label>
+          <ion-label>Voltas</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>header</ion-label>
+          <ion-label>Repetições</ion-label>
         </ion-col>
       </ion-row>
 

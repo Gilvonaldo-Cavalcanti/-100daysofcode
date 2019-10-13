@@ -17,7 +17,7 @@
 
     <ion-item>
       <ion-label>Dia da Semana</ion-label>
-      <ion-select placeholder="Select One">
+      <ion-select placeholder="Dia">
         <ion-select-option value="dom">Domingo</ion-select-option>
         <ion-select-option value="seg">Segunda-Feira</ion-select-option>
         <ion-select-option value="ter">Terça-Feira</ion-select-option>
@@ -27,19 +27,28 @@
       </ion-select>
     </ion-item>
 
-    
-
   </ion-list>
 
+  <ion-list lines="none">
+    <form [formGroup]="myForm">
+      <ion-item *ngFor="let control of myForm.controls | keyvalue">
+        <ion-input required type="text" [formControlName]="control.key" placeHolder="Nome"> 
+          <ion-item>
+            <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Quant.</ion-button>
+          </ion-item>  
+          </ion-input>
+        <ion-icon (click)="removeControl(control)" name="close-circle"></ion-icon>
+      </ion-item>
+    </form>
+  </ion-list>
 
+  <ion-button expand="full" color="light" (click)="addControl()">Adicionar Exercício</ion-button>
 
 </ion-content>
 
 <ion-footer>
-
   <ion-toolbar>
-
-    <ion-button (click)="salvarTreino()" expand="block">
+    <ion-button (click)="salvarTreino()" expand="block" color="light">
       Salvar
     </ion-button>
 
