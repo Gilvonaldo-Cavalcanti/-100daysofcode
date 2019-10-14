@@ -16,8 +16,13 @@ export class TreinoPage implements OnInit {
   private treino: Treino = {};
 
   private loading: any;
-  private voltas = '';
-  private series = '';
+  
+  voltas = [0];
+  series = [0];
+
+  indexVoltas = 0;
+  indexSeries = 0;
+
   /** Add/Remove dinamicamente campos */
   public myForm: FormGroup;
   private numExercicios: number = 1;
@@ -30,7 +35,7 @@ export class TreinoPage implements OnInit {
     private toastCtrl: ToastController,
     private authService: AuthService
   ) {
-
+    
     this.myForm = formBuilder.group({
       exercicio: ['', Validators.required]
     });
@@ -93,28 +98,31 @@ export class TreinoPage implements OnInit {
     let picker = await this.pickerCtrl.create(opts);
     picker.present();
     picker.onDidDismiss().then(async data => {
-      /*
-      let col = await picker.getColumn('series');
-      console.log('col:', col);
-      this.framework = col.options[col.selectedIndex].text;
-      */
-
+      
       let quantVoltas = await picker.getColumn('voltas');
       let quantSeries = await picker.getColumn('series');
-      console.log('series:', quantSeries.selectedIndex, 'voltas:', quantVoltas.selectedIndex);
+      
+      //console.log('series:', quantSeries.selectedIndex, 'voltas:', quantVoltas.selectedIndex);
 
-      return [quantSeries.selectedIndex, quantVoltas.selectedIndex];
-      //let selecionado: {quantVoltas.selectedIndex.text, quantSeries.selectedIndex.text};
-      //return 
+      //let selecionado = [quantSeries.selectedIndex, quantVoltas.selectedIndex];
+
+      this.voltas.push(quantVoltas.selectedIndex +1);
+      this.series.push(quantSeries.selectedIndex +1);
+
       //this.framework = col1.options[col.selectedIndex].text;
-
+      //return selecionado[index];
     }
     )
+    
+    
+    
   }
 
 
   addControl() {
     this.numExercicios++;
+    this.indexVoltas++;
+    this.indexSeries++;
     this.myForm.addControl('exercicio' + this.numExercicios, new FormControl('', Validators.required));
   }
   removeControl(control) {

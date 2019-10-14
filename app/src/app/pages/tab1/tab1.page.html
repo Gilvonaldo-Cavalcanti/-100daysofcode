@@ -1,10 +1,8 @@
 <ion-header>
 
-
   <ion-toolbar>
 
     <ion-title>Minha Ficha de Treino</ion-title>
-
 
       <ion-buttons slot="end">
         <ion-menu-button autoHide="false">
@@ -20,15 +18,13 @@
 <ion-content>
 
 
-
-
   <!--Exemplo de card de treinos -->
 
-  <ion-card button [routerLink]="">
+  <ion-card button (click)="treinodetalhe()">
 
     <ion-card-header>
       <ion-card-subtitle>Segunda-Feira</ion-card-subtitle>
-      <ion-card-title>Costas e Bíceps</ion-card-title>
+      <ion-card-title>Exemplo de Treino 1</ion-card-title>
     </ion-card-header>
 
 
@@ -48,44 +44,42 @@
 
       <ion-row style="border-bottom: groove;">
         <ion-col col-4>
-          <ion-label>row</ion-label>
+          <ion-label>Leg 90º</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>02/02/2018</ion-label>
+          <ion-label>5 voltas</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>row</ion-label>
+          <ion-label>14 repetições</ion-label>
         </ion-col>
       </ion-row>
 
       <ion-row style="border-bottom: groove;">
         <ion-col col-4>
-          <ion-label>row</ion-label>
+          <ion-label>supino</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>02/02/2018</ion-label>
+          <ion-label>3 voltas</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>row</ion-label>
+          <ion-label>12 repetições</ion-label>
         </ion-col>
       </ion-row>
 
       <ion-row>
         <ion-col col-4>
-          <ion-label>row</ion-label>
+          <ion-label>stiff</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>02/02/2018</ion-label>
+          <ion-label>4 voltas</ion-label>
         </ion-col>
         <ion-col col-4>
-          <ion-label>row</ion-label>
+          <ion-label>10 repetições</ion-label>
         </ion-col>
       </ion-row>
-
     </ion-card-content>
-
   </ion-card>
-
+ 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="pageaddtreino()">
