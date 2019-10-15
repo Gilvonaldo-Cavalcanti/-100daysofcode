@@ -10,7 +10,7 @@
 <ion-content>
 
   <ion-list>
-    
+
     <ion-item>
       <ion-label>Dia da Semana</ion-label>
       <ion-select placeholder="Dia">
@@ -23,8 +23,8 @@
       </ion-select>
     </ion-item>
     <ion-item>
-        <ion-input type="text" [(ngModel)]="treino.nomeTreino" placeholder="Nome do Treino"></ion-input>
-      </ion-item>
+      <ion-input type="text" [(ngModel)]="treino.nomeTreino" placeholder="Nome do Treino"></ion-input>
+    </ion-item>
   </ion-list>
 
   <ion-list lines="none">
@@ -34,24 +34,27 @@
 
 
         <ion-item>
-        
+
           <ion-input required type="text" [formControlName]="control.key" placeHolder="Nome do Exercício"></ion-input>
           <ion-icon (click)="removeControl(control)" name="close-circle"></ion-icon>
 
         </ion-item>
 
         <ion-item>
-            
-              <ion-label >
-                Voltas: {{ voltas[indexVoltas] || '0' }}
-              </ion-label>
-              <ion-label >
-                Séries: {{ series[indexSeries] || '0' }}
-              </ion-label>
-                   
-              <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Escolher Quantidades</ion-button>
-           </ion-item>
-        
+          
+          <ion-input required type="text" [formControlName]="control.key" >
+            <div>Voltas: {{ voltas[indexVoltas] }}</div>
+          </ion-input>
+
+          <ion-input required type="text" [formControlName]="control.key" >
+            <div >Séries: {{ series[indexSeries] }}</div>
+          </ion-input>
+
+
+          <ion-button slot="end" fill="clear" (click)="showBasicPicker()">Escolher Quantidades</ion-button>
+        </ion-item>          
+
+
       </div>
     </form>
 

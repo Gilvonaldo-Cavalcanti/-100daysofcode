@@ -17,8 +17,8 @@ export class TreinoPage implements OnInit {
 
   private loading: any;
   
-  voltas = [0];
-  series = [0];
+  voltas = [];
+  series = [];
 
   indexVoltas = 0;
   indexSeries = 0;
@@ -36,8 +36,12 @@ export class TreinoPage implements OnInit {
     private authService: AuthService
   ) {
     
-    this.myForm = formBuilder.group({
-      exercicio: ['', Validators.required]
+    this.myForm = this.formBuilder.group({
+      exercicio: ['', Validators.required],
+      //voltas: ['', Validators.required],
+      //series: ['', Validators.required],
+
+      
     });
   }
 
@@ -123,7 +127,12 @@ export class TreinoPage implements OnInit {
     this.numExercicios++;
     this.indexVoltas++;
     this.indexSeries++;
+    //console.log("Voltas => ", this.voltas);
+    //console.log("Séries => ", this.series);
     this.myForm.addControl('exercicio' + this.numExercicios, new FormControl('', Validators.required));
+    //this.myForm.addControl('voltas' + this.numExercicios, new FormControl('', Validators.required));
+    //this.myForm.addControl('series' + this.numExercicios, new FormControl('', Validators.required));
+
   }
   removeControl(control) {
     this.myForm.removeControl(control.key);
