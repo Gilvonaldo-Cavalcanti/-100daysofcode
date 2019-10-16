@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { Treino } from 'src/app/interfaces/treino';
+import { Subscription } from 'rxjs';
+import { TreinoService } from 'src/app/services/treino.service';
 
 @Component({
   selector: 'app-tab1',
@@ -9,7 +12,22 @@ import { Router } from '@angular/router';
 })
 export class Tab1Page implements OnInit {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  private treinos = new Array<Treino>();
+  private treinoSubscription: Subscription;
+
+  constructor(
+    private authService: AuthService, 
+    private router: Router,
+    private treinoService: TreinoService) 
+    { 
+
+      this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {
+        this.treinos = data;
+      }
+
+      )
+
+     }
 
   ngOnInit() {
   }
@@ -24,6 +42,10 @@ export class Tab1Page implements OnInit {
 
   sair() {
       this.authService.logout();    
+  }
+
+  ngOnDestroy(){
+    this.treinoSubscription.unsubscribe();
   }
 
 }

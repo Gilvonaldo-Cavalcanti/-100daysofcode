@@ -2,6 +2,7 @@ export interface Treino {
     id?: string,
     nomeTreino?: string,
     dia?: string, 
-    userId?: string
-    
+    userId?: string,
+    descricao?: string,
+    criadoEm?: string,
 }

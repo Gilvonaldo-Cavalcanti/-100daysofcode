@@ -7,13 +7,14 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class TreinoService {
+
   private treinoCollection: AngularFirestoreCollection<Treino>;
 
   constructor(private afs: AngularFirestore) {
     this.treinoCollection = this.afs.collection<Treino>('Treinos');
   }
   
-  getTreino() {
+  getTreinos() {
     return this.treinoCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
@@ -27,6 +28,10 @@ export class TreinoService {
   }
 
   addTreino(treino: Treino) {
+    return this.treinoCollection.add(treino);
+  }
 
+  getTreino(id: string){
+    return this.treinoCollection.doc<Treino>(id).valueChanges();
   }
 }

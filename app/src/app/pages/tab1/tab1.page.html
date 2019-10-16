@@ -18,7 +18,7 @@
 <ion-content>
 
 
-  <!--Exemplo de card de treinos -->
+  <!--Exemplo de card de treinos 
 
   <ion-card button (click)="treinodetalhe()">
 
@@ -79,7 +79,47 @@
       </ion-row>
     </ion-card-content>
   </ion-card>
- 
+ -->
+
+
+  <ion-list *ngIf="!treinos.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+<ion-item-sliding *ngFor="let treino of treinos">
+  <ion-item button [routerLink]="['treino-detalhe', treino.id]">
+    <ion-label>
+      <h6>{{ treino.nomeTreino }}</h6>
+      <p>{{ treino.descricao }}</p>
+    </ion-label>
+
+  </ion-item>
+
+</ion-item-sliding>
+
+  </ion-list>
+
+
+
+
+
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="pageaddtreino()">
