@@ -91,3 +91,10 @@
 **Comentários:** Correção do bug ao salvar as informações das quantidades de treinos, implementação dos métodos de acesso ao bd firebase e início da implementação da página de exercícios. Ainda necessitando de ajustes.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 013: 16 de Outubro de 2019
+**Progresso de hoje:** Implementação da aba progresso.
+
+**Comentários:** Implementação da aba progresso, adição do ion-calendar2 com marcação de eventos(adição de treinos realizados).
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
