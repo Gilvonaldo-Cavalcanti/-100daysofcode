@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>tab2</ion-title>
+    <ion-title>
+      {{ viewTitle }}
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="today()">Hoje</ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

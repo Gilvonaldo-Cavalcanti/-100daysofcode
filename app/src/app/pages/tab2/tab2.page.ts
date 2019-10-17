@@ -1,5 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
+import { format } from 'util';
+import { formatDate } from '@angular/common';
+import { AlertController } from '@ionic/angular';
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -28,7 +31,7 @@ export class Tab2Page implements OnInit {
 
   @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
 
-  constructor() { }
+  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID)private locale: string) { }
 
   ngOnInit() {
     this.resetEvent();
@@ -68,8 +71,11 @@ export class Tab2Page implements OnInit {
   }
 
 
-  onTimeSelected(){
-
+  onTimeSelected(ev){
+    let selected = new Date(ev.selectedTime);
+    this.event.startTime = selected.toISOString();
+    selected.setHours(selected.getHours()+1);
+    this.event.endTime = (selected.toISOString());
   }
 
   changeMode(mode){
@@ -86,12 +92,20 @@ export class Tab2Page implements OnInit {
     swiper.slideNext();
   }
 
-  onViewTitleChanged(){
-
+  onViewTitleChanged(title){
+    this.viewTitle = title;
   }
 
-  onEventSelected(){
+  async onEventSelected(event){
+    let start = formatDate(event.startTime, 'medium', this.locale);
+    let end = formatDate(event.endTime, 'medium', this.locale);
 
+    const alert = await this.alertCtrl.create({
+      header: event.title,
+      subHeader: event.desc,
+      message: 'From: ' + start + '<br><br>To: '+ end,
+      buttons: ['OK']
+    })
   }
 
 
