@@ -4,13 +4,13 @@
 
     <ion-title>Minha Ficha de Treino</ion-title>
 
-      <ion-buttons slot="end">
-        <ion-menu-button autoHide="false">
+    <ion-buttons slot="end">
+      <ion-menu-button autoHide="false">
 
-          <ion-icon name="log-out" (click)="sair()" [routerLink]="tabs"></ion-icon>
+        <ion-icon name="log-out" (click)="sair()" [routerLink]="tabs"></ion-icon>
 
-        </ion-menu-button>
-      </ion-buttons>
+      </ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 
 </ion-header>
@@ -92,10 +92,10 @@
           <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
         </h3>
         <p>
-            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
         </p>
         <p>
-            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
         </p>
       </ion-label>
 
@@ -103,16 +103,19 @@
   </ion-list>
 
   <ion-list>
-<ion-item-sliding *ngFor="let treino of treinos">
-  <ion-item button [routerLink]="['treino-detalhe', treino.id]">
-    <ion-label>
-      <h6>{{ treino.nomeTreino }}</h6>
-      <p>{{ treino.descricao }}</p>
-    </ion-label>
+    <ion-item-sliding *ngFor="let treino of treinos">
+      <ion-item button [routerLink]="['treino-detalhe', treino.id]">
+        <ion-avatar slot="start">
+          <ion-skeleton-text animated></ion-skeleton-text>
+        </ion-avatar>
+        <ion-label>
+          <h6>{{ treino.nomeTreino }}</h6>
+          <p>{{ treino.descricao }}</p>
+        </ion-label>
 
-  </ion-item>
+      </ion-item>
 
-</ion-item-sliding>
+    </ion-item-sliding>
 
   </ion-list>
 

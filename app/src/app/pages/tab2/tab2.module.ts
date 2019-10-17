@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { Tab2Page } from './tab2.page';
 
+import { NgCalendarModule } from 'ionic2-calendar';
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    NgCalendarModule
   ],
   declarations: [Tab2Page]
 })
