@@ -64,3 +64,30 @@
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
 
+### Dia 009: 12 de Outubro de 2019
+**Progresso de hoje:** Adição e remoção de campos, "nome do treino", dinâmicamente na page add treino.
+
+**Comentários:** Adição de campos dinâmicos na adição de novos exercícios, método de logout e ion-picker com mútplas escolhas.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 010: 13 de Outubro de 2019
+**Progresso de hoje:** Ajustes na adição de treinos.
+
+**Comentários:** Ajustes no ion-picker para escolhas das quantidades de voltas e series na adição de novos treinos.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 011: 14 de Outubro de 2019
+**Progresso de hoje:** Ajustes na página de treinos, bug do formulário dinâmico.
+
+**Comentários:** Alterações no picker de escolhas de voltas e séries na página de adição de treinos, ocorreu um bug pois não está salvando as informações dinâmicas do formulário.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 012: 15 de Outubro de 2019
+**Progresso de hoje:** Resolução do bug em adição de treinos e finalização do backend de treinos.
+
+**Comentários:** Correção do bug ao salvar as informações das quantidades de treinos, implementação dos métodos de acesso ao bd firebase e início da implementação da página de exercícios. Ainda necessitando de ajustes.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
