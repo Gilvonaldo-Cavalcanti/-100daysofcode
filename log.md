@@ -98,3 +98,10 @@
 **Comentários:** Implementação da aba progresso, adição do ion-calendar2 com marcação de eventos(adição de treinos realizados).
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 014: 17 de Outubro de 2019
+**Progresso de hoje:** Ajuste na tab1 e adição de exercícios em treinos.
+
+**Comentários:** Modificação da exibição de conteúdos na tab1, que passa a ser por cards, e adição de um array exercícios em cadastro de treinos.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
