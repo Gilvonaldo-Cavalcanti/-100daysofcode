@@ -1,11 +1,11 @@
-import { Component, OnInit, ɵCompiler_compileModuleAndAllComponentsSync__POST_R3__ } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Treino } from 'src/app/interfaces/treino';
-import { LoadingController, ToastController, PickerController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
-import { PickerOptions } from '@ionic/core';
 import { TreinoService } from 'src/app/services/treino.service';
 import { Exercicio } from 'src/app/interfaces/exercicio';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -29,7 +29,7 @@ export class TreinoPage implements OnInit {
 
 
   constructor(
-    private pickerCtrl: PickerController,
+    private router: Router,
     private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
@@ -40,6 +40,7 @@ export class TreinoPage implements OnInit {
     this.myForm = this.formBuilder.group({
       exercicio: ['', Validators.required],   
     });
+//    this.treino.exercicios = {};
   }
 
   ngOnInit() {
@@ -54,24 +55,28 @@ export class TreinoPage implements OnInit {
     this.myForm.removeControl(control.key);
   }
 
+
+
   async salvarTreino() {
     await this.presentLoading();
-
+    
     this.treino.userId = this.authService.getAuth().currentUser.uid;
 
     if (this.treinoId){
 
     }else {
-      this.treino.criadoEm = "Hoje";
-      /*
-      for (var i of this.myForm.getRawValue()){
-        this.treino.treinos.push();
-      }*/
+
+      let camposDeExercicios = Array.of(this.myForm.value);
+
+      for (let a of camposDeExercicios){
+        this.treino.exercicios.push(a);
+      }
+            
       try {
         await this.treinoService.addTreino(this.treino);
         await this.loading.dismiss();
 
-
+        this.router.navigateByUrl("", { skipLocationChange: true });
       }catch (error){
         this.presentToast('Error ao tentar salvar!');
         this.loading.dismiss();

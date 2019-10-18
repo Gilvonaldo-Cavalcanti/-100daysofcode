@@ -16,35 +16,34 @@ export class Tab1Page implements OnInit {
   private treinoSubscription: Subscription;
 
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
     private router: Router,
-    private treinoService: TreinoService) 
-    { 
+    private treinoService: TreinoService) {
 
-      this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {
-        this.treinos = data;
-      }
+    this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {
+      this.treinos = data;
+    }
 
-      )
+    )
 
-     }
+  }
 
   ngOnInit() {
   }
 
-  pageaddtreino(){
+  pageaddtreino() {
     this.router.navigateByUrl("treino", { skipLocationChange: true });
   }
 
-  treinodetalhe(){  
+  treinodetalhe() {
     this.router.navigateByUrl("treino-detalhe", { skipLocationChange: true });
   }
 
   sair() {
-      this.authService.logout();    
+    this.authService.logout();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.treinoSubscription.unsubscribe();
   }
 
