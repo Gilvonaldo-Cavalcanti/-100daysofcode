@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab3Page implements OnInit {
 
+  avaliacoes: number = 0;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  pageAddAvaliacao(){
+    this.avaliacoes++;
   }
 
 }

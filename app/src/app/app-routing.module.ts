@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule', canActivate: [LoginGuard] },
   { path: 'treino', loadChildren: './pages/treino/treino.module#TreinoPageModule' },
   { path: 'treino-detalhe/:id', loadChildren: './pages/treino-detalhe/treino-detalhe.module#TreinoDetalhePageModule' },
+  { path: 'avaliacoes', loadChildren: './pages/avaliacoes/avaliacoes.module#AvaliacoesPageModule' },
 ];
 
 @NgModule({
