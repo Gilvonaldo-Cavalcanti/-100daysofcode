@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>avaliacoes</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Ombro:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.ombro"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Tórax:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.torax"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Abdomem:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.abdomem"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quadril:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.quadril"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Braço Direito:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.bracodireito"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Braço Esquerdo:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.bracoesquerdo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Coxa Direita:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.coxadireita"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Perna Direita:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.pernadireita"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Perna Esquerda:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.pernaesquerda"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Peso:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.peso"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Altura:</ion-label>
+      <ion-input type="text" [(ngModel)]="avaliacao.altura"></ion-input>
+    </ion-item>
+    <ion-button (click)="salvarAvaliacao()">Salvar</ion-button>
+  </ion-list>
+
+
+</ion-content>

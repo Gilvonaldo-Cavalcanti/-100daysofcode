@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab3',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Tab3Page implements OnInit {
 
-  avaliacoes: number = 0;
+  private router: Router;
 
   constructor() { }
 
@@ -16,7 +17,6 @@ export class Tab3Page implements OnInit {
 
 
   pageAddAvaliacao(){
-    this.avaliacoes++;
-  }
+    this.router.navigateByUrl("avaliacoes", { skipLocationChange: true });  }
 
 }
