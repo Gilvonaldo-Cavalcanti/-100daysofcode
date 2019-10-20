@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AvaliacoesService {
+export class AvaliacaoService {
 
   private treinoCollection: AngularFirestoreCollection<Avaliacao>;
 

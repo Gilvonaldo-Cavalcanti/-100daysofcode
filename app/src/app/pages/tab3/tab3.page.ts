@@ -8,15 +8,18 @@ import { Router } from '@angular/router';
 })
 export class Tab3Page implements OnInit {
 
-  private router: Router;
+  
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
 
   pageAddAvaliacao(){
-    this.router.navigateByUrl("avaliacoes", { skipLocationChange: true });  }
+    this.router.navigateByUrl("avaliacao", { skipLocationChange: true });  
+  }
 
 }

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>avaliacoes</ion-title>
+    <ion-title>Avaliação Física</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -51,8 +51,13 @@
       <ion-label>Altura:</ion-label>
       <ion-input type="text" [(ngModel)]="avaliacao.altura"></ion-input>
     </ion-item>
-    <ion-button (click)="salvarAvaliacao()">Salvar</ion-button>
+
   </ion-list>
 
-
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="salvarAvaliacao()" expand="block" color="light">Salvar</ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -3,18 +3,18 @@ import { Avaliacao } from 'src/app/interfaces/avaliacao';
 import { Router } from '@angular/router';
 import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
-import { AvaliacoesService } from 'src/app/services/avaliacao.service';
+import { AvaliacaoService } from 'src/app/services/avaliacao.service';
 
 @Component({
-  selector: 'app-avaliacoes',
-  templateUrl: './avaliacoes.page.html',
-  styleUrls: ['./avaliacoes.page.scss'],
+  selector: 'app-avaliacao',
+  templateUrl: './avaliacao.page.html',
+  styleUrls: ['./avaliacao.page.scss'],
 })
-export class AvaliacoesPage implements OnInit {
+export class AvaliacaoPage implements OnInit {
 
 
   private avaliacao: Avaliacao = {};
-  private avaliacaoService: AvaliacoesService;
+  private avaliacaoService: AvaliacaoService;
   private avaliacaoId = null;
   private loading: any;
 
