@@ -105,3 +105,24 @@
 **Comentários:** Modificação da exibição de conteúdos na tab1, que passa a ser por cards, e adição de um array exercícios em cadastro de treinos.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 015: 18 de Outubro de 2019
+**Progresso de hoje:** Implementaço da aba de avaliações.
+
+**Comentários:** Início da implementação da aba de avaliações.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 016: 19 de Outubro de 2019
+**Progresso de hoje:** Continuação da implementaço da aba de avaliações.
+
+**Comentários:** Implementação da aba de avaliaçes com adição de campos de cadastro e criação de services para o CRUD de avaliações.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 017: 20 de Outubro de 2019
+**Progresso de hoje:** Correção de bugs em avaliações.
+
+**Comentários:** Correção de bugs em rotas e na persistencia com o banco, adição de proteção de rotas com guards e implementação da view de avaliações.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
