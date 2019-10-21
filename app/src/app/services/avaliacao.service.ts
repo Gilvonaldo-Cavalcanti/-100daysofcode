@@ -8,14 +8,14 @@ import { map } from 'rxjs/operators';
 })
 export class AvaliacaoService {
 
-  private treinoCollection: AngularFirestoreCollection<Avaliacao>;
+  private avaliacaoCollection: AngularFirestoreCollection<Avaliacao>;
 
   constructor(private afs: AngularFirestore) { 
-    this.treinoCollection = this.afs.collection<Avaliacao>('Avaliacao');
+    this.avaliacaoCollection = this.afs.collection<Avaliacao>('Avaliacao');
   }
 
   getAvaliacoes() {
-    return this.treinoCollection.snapshotChanges().pipe(
+    return this.avaliacaoCollection.snapshotChanges().pipe(
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
@@ -28,13 +28,16 @@ export class AvaliacaoService {
   }
 
   addAvaliacao(avaliacao: Avaliacao) {
-    return this.treinoCollection.add(avaliacao);
+    return this.avaliacaoCollection.add(avaliacao);
   }
 
   getAvaliacao(id: string){
-    return this.treinoCollection.doc<Avaliacao>(id).valueChanges();
+    return this.avaliacaoCollection.doc<Avaliacao>(id).valueChanges();
   }
 
+  removeAvaliacao(id: string){
+    return this.avaliacaoCollection.doc(id).delete();
+  }
 
 
 

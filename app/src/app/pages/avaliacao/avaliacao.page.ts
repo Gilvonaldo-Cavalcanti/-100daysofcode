@@ -14,41 +14,51 @@ export class AvaliacaoPage implements OnInit {
 
 
   private avaliacao: Avaliacao = {};
-  private avaliacaoService: AvaliacaoService;
   private avaliacaoId = null;
   private loading: any;
 
-  constructor( private router: Router,
+
+  constructor(private router: Router,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private avaliacaoService: AvaliacaoService) {
+
+  }
 
   ngOnInit() {
   }
 
 
-  async salvarAvaliacao(){
+  async salvarAvaliacao() {
     await this.presentLoading();
-    
+
     this.avaliacao.userId = this.authService.getAuth().currentUser.uid;
 
-    if (this.avaliacaoId){
+    if (this.avaliacaoId) {
 
-    }else {
+    } else {
+
+      let dataAtual = new Date();
+
+      this.avaliacao.criadoEm = dataAtual.toLocaleDateString();
 
       try {
         await this.avaliacaoService.addAvaliacao(this.avaliacao);
         await this.loading.dismiss();
 
         this.router.navigateByUrl("", { skipLocationChange: true });
-      }catch (error){
+      } catch (error) {
         this.presentToast('Error ao tentar salvar!');
         this.loading.dismiss();
       }
     }
   }
 
-  
+  removeAvaliacao(id: string){
+    return this.avaliacaoService.removeAvaliacao(id);
+  }
+
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Por favor, aguarde...', });
     return this.loading.present();

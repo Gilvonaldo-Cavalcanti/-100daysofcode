@@ -1,4 +1,5 @@
 export interface Avaliacao {
+    id?: string,
     userId?: string,
     ombro?: string,
     torax?: string,
