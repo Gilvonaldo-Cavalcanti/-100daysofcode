@@ -17,7 +17,7 @@ export class TreinoPage implements OnInit {
 
   private treino: Treino = {};
   private loading: any;
-  private treinoId: string = null;  
+  private treinoId: string = null;
 
   /* Adição dos exercícios vinculados a fixa de treino */
   private exercicio: Exercicio = {};
@@ -27,6 +27,8 @@ export class TreinoPage implements OnInit {
   public myForm: FormGroup;
   private numExercicios: number = 1;
 
+  /** Array de chaves */
+  private chavesExercicios: Array<string> = new Array;
 
   constructor(
     private router: Router,
@@ -36,11 +38,14 @@ export class TreinoPage implements OnInit {
     private treinoService: TreinoService,
     private authService: AuthService
   ) {
-    
+
     this.myForm = this.formBuilder.group({
-      exercicio: ['', Validators.required],   
+      exercicio: ['', Validators.required],
     });
-//    this.treino.exercicios = {};
+    
+
+    this.treino.exercicios = [""];
+
   }
 
   ngOnInit() {
@@ -48,9 +53,11 @@ export class TreinoPage implements OnInit {
 
 
   addControl() {
-    this.numExercicios++;   
-    this.myForm.addControl('exercicio' + this.numExercicios, new FormControl('', Validators.required));
-   }
+    this.numExercicios++;
+    let chave = 'exercicio' + this.numExercicios;
+    this.chavesExercicios.push(chave);
+    this.myForm.addControl(chave, new FormControl('', Validators.required));
+  }
   removeControl(control) {
     this.myForm.removeControl(control.key);
   }
@@ -59,25 +66,24 @@ export class TreinoPage implements OnInit {
 
   async salvarTreino() {
     await this.presentLoading();
-    
+
     this.treino.userId = this.authService.getAuth().currentUser.uid;
 
-    if (this.treinoId){
+    if (this.treinoId) {
 
-    }else {
-
-      let camposDeExercicios = Array.of(this.myForm.value);
-
-      for (let a of camposDeExercicios){
-        this.treino.exercicios.push(a);
+    } else {
+      
+     
+      for (let i of this.chavesExercicios){
+        this.treino.exercicios.push(this.myForm.value[i]);
       }
-            
+      
       try {
         await this.treinoService.addTreino(this.treino);
         await this.loading.dismiss();
 
         this.router.navigateByUrl("", { skipLocationChange: true });
-      }catch (error){
+      } catch (error) {
         this.presentToast('Error ao tentar salvar!');
         this.loading.dismiss();
       }

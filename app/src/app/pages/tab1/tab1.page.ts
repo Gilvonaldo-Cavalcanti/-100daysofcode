@@ -14,12 +14,14 @@ export class Tab1Page implements OnInit {
 
   private treinos = new Array<Treino>();
   private treinoSubscription: Subscription;
-
+    
   constructor(
     private authService: AuthService,
     private router: Router,
-    private treinoService: TreinoService) {
-
+    private treinoService: TreinoService,
+      
+    ) {
+      
     this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {
       this.treinos = data;
     }
@@ -29,6 +31,25 @@ export class Tab1Page implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  getExercicio(id: string):Array<string>{
+    let exercicios: Array<string> = [];
+    
+    for (let treino of this.treinos){
+      if (Object.is(treino.id, id)){
+        
+        if (treino.exercicios != null){
+          for (let a of treino.exercicios){
+            exercicios.push(a);
+          }
+        }
+      }
+    }
+    if (exercicios.length === null){
+      exercicios.push("Sem Exercícios Cadastrados");
+    }
+    return exercicios;
   }
 
   pageaddtreino() {
