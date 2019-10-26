@@ -31,6 +31,10 @@ export class Tab3Page implements OnInit {
   }
 
 
+  removeAvaliacao(id: string){
+    return this.avaliacaoService.removeAvaliacao(id);
+  }
+
   pageAddAvaliacao() {
     this.router.navigateByUrl("avaliacao", { skipLocationChange: true });
   }

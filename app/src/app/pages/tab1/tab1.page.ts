@@ -39,6 +39,10 @@ export class Tab1Page implements OnInit {
     this.router.navigateByUrl("treino-detalhe", { skipLocationChange: true });
   }
 
+  removeTreino(id: string){
+    return this.treinoService.removeTreino(id);
+  }
+
   sair() {
     this.authService.logout();
   }

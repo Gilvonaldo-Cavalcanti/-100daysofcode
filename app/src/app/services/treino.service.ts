@@ -34,4 +34,9 @@ export class TreinoService {
   getTreino(id: string){
     return this.treinoCollection.doc<Treino>(id).valueChanges();
   }
+
+  removeTreino(id: string){
+    return this.treinoCollection.doc(id).delete();
+  }
+
 }

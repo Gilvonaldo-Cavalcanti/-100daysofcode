@@ -40,14 +40,13 @@ export class AvaliacaoPage implements OnInit {
     } else {
 
       let dataAtual = new Date();
-
       this.avaliacao.criadoEm = dataAtual.toLocaleDateString();
 
       try {
         await this.avaliacaoService.addAvaliacao(this.avaliacao);
         await this.loading.dismiss();
 
-        this.router.navigateByUrl("", { skipLocationChange: true });
+        this.router.navigateByUrl("tabs/tab3", { skipLocationChange: true });
       } catch (error) {
         this.presentToast('Error ao tentar salvar!');
         this.loading.dismiss();
@@ -55,9 +54,6 @@ export class AvaliacaoPage implements OnInit {
     }
   }
 
-  removeAvaliacao(id: string){
-    return this.avaliacaoService.removeAvaliacao(id);
-  }
 
   async presentLoading() {
     this.loading = await this.loadingCtrl.create({ message: 'Por favor, aguarde...', });
