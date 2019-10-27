@@ -1,10 +1,15 @@
 <ion-content>
 
+
   <div class="container">
+
+    <div class="logo">
+        <img src="/assets/img/logo-gym.png">
+    </div>
+    
     <div class="container-segment">
-      <ion-toolbar>
-        <!-- segment with default selection -->
-        <ion-segment (ionChange)="segmentChanged($event)" value="login">
+      
+        <ion-segment (ionChange)="segmentChanged($event)" value="login" color="light">
           <ion-segment-button value="login">
             <ion-label>Login</ion-label>
           </ion-segment-button>
@@ -12,14 +17,12 @@
             <ion-label>Cadastro</ion-label>
           </ion-segment-button>
         </ion-segment>
-      </ion-toolbar>
+      
     </div>
-
 
     <ion-slides class="swiper-no-swiping">
       <ion-slide>
         <div class="slide-inner ion-padding">
-          <span>Login</span>
           <ion-item class="ion-margin-top" lines="none">
             <ion-input type="email" placeholder="E-Mail" [(ngModel)]="userLogin.email"></ion-input>
           </ion-item>
@@ -33,7 +36,6 @@
       </ion-slide>
       <ion-slide>
         <div class="slide-inner ion-padding">
-          <span>Cadastro</span>
           <ion-item class="ion-margin-top" lines=none>
             <ion-input type="text" placeholder="Nome"></ion-input>
           </ion-item>

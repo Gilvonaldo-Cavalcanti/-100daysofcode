@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Treino } from 'src/app/interfaces/treino';
 import { Subscription } from 'rxjs';
 import { TreinoService } from 'src/app/services/treino.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -16,7 +16,6 @@ export class Tab1Page implements OnInit {
   private treinoSubscription: Subscription;
     
   constructor(
-    private authService: AuthService,
     private router: Router,
     private treinoService: TreinoService,
       
@@ -32,6 +31,7 @@ export class Tab1Page implements OnInit {
 
   ngOnInit() {
   }
+
 
   getExercicio(id: string):Array<string>{
     let exercicios: Array<string> = [];
@@ -64,9 +64,6 @@ export class Tab1Page implements OnInit {
     return this.treinoService.removeTreino(id);
   }
 
-  sair() {
-    this.authService.logout();
-  }
 
   ngOnDestroy() {
     this.treinoSubscription.unsubscribe();
