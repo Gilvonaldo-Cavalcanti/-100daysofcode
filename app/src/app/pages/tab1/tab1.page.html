@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header >
   <ion-toolbar>
     <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>
+      Treinos
+    </ion-title>
   </ion-toolbar>
 
 </ion-header>
@@ -48,7 +51,7 @@
 
         </ion-card-content>
 
-        <ion-item>
+        <ion-item color="novacor">
           <ion-icon button name="trash" (click)="removeTreino(treino.id)" slot="start"></ion-icon>
           <ion-button fill="outline" slot="end" [routerLink]="['treino-detalhe/', treino.id]">Detalhes</ion-button>
         </ion-item>
@@ -56,8 +59,12 @@
       </ion-card>
 
     </ion-list>
+
+  
+
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="pageaddtreino()">
+    <ion-fab-button (click)="pageaddtreino()" color="light">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>

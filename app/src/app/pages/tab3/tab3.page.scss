@@ -1,8 +1,9 @@
-ion-list {
-    background-color: rgb(0, 0, 0);
 
-    ion-card {
-        background-color: white;
+ion-list ion-card {
+    background-color: #e6e6e6;
+    
+    ion-item-divider {
+        background-color: #e6e6e6;
     }
 
 }

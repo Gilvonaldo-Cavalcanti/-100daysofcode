@@ -15,6 +15,9 @@ import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 
+import { Keyboard } from '@ionic-native/keyboard/ngx';
+
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -26,7 +29,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Keyboard
   ],
   bootstrap: [AppComponent]
 })
