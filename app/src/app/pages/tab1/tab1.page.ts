@@ -70,11 +70,10 @@ export class Tab1Page implements OnInit {
 
   private presentAlert(): boolean | Promise<boolean> | Observable<boolean> {
  
-    // return this.confirmDialogService.confirm('Quieres cancelar el mensaje? Tu mensaje no será enviado!');
     return new Promise((resolve: any, reject: any) => {
       this.alertController.create({
-        header: 'Abandonar?',
-        message: 'Quieres cancelar el mensaje? Tu mensaje no será enviado!',
+        header: 'Tem certeza que deseja excluir esse treino?',
+        message: 'Clique ok para confirmar!',
         buttons: [
           {
             text: 'notOk',

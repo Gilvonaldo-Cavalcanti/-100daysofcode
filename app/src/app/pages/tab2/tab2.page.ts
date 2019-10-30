@@ -102,7 +102,7 @@ export class Tab2Page implements OnInit {
     const alert = await this.alertCtrl.create({
       header: event.title,
       subHeader: event.desc,
-      message: 'From: ' + start + '<br><br>To: '+ end,
+      message: 'De: ' + start + '<br><br>Até: '+ end,
       buttons: ['OK']
     })
   }
