@@ -94,11 +94,8 @@ export class Tab1Page implements OnInit {
   async removeTreino(id: string) {
     let opc = await this.presentAlert();
     if (opc){
-      console.log("Ok");
-    } else if (!opc){
-      console.log("Tchau");
-    }
-    //return this.treinoService.removeTreino(id);
+      return this.treinoService.removeTreino(id);
+    } 
   }
 
 }
