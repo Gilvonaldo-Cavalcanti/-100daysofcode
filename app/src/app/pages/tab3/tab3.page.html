@@ -1,8 +1,14 @@
 <ion-header>
   <ion-toolbar>
+      <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>
-      Avaliações
+        <div class="ion-text-center">
+            Avaliações
+            
+        </div>
+
     </ion-title>
+      <div> </div>
   </ion-toolbar>
 </ion-header>
 
@@ -18,7 +24,7 @@
 
           <ion-item color="novacor">
 
-              <ion-label style="text-align: center;">
+              <ion-label class="ion-text-center">
                 <h5>Ficha de Avaliação</h5>
                 <ion-note>{{ avaliacao.criadoEm }}</ion-note>
               </ion-label>

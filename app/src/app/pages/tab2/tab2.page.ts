@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, Inject, LOCALE_ID } from '@angular/core';
 import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { formatDate } from '@angular/common';
 import { AlertController } from '@ionic/angular';
+import { ProgressoService } from 'src/app/services/progresso.service';
+
 @Component({
   selector: 'app-tab2',
   templateUrl: './tab2.page.html',
@@ -23,14 +25,19 @@ export class Tab2Page implements OnInit {
 
   calendar = {
     mode: 'month',
-    currentDate: new Date()
+    currentDate: new Date(),
   }
-
-  viewTitle = '';
 
   @ViewChild(CalendarComponent, { static: false }) myCal: CalendarComponent;
 
-  constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID)private locale: string) { }
+  constructor(
+    private progressoService: ProgressoService,
+    private alertCtrl: AlertController, 
+    @Inject(LOCALE_ID)private locale: string) { 
+
+      this.eventSource.push(this.progressoService.getEventos());
+
+     }
 
   ngOnInit() {
     this.resetEvent();
@@ -67,6 +74,7 @@ export class Tab2Page implements OnInit {
     this.myCal.loadEvents();
     this.resetEvent();
 
+    this.progressoService.addEvento(eventCopy);
   }
 
 
@@ -90,11 +98,7 @@ export class Tab2Page implements OnInit {
     var swiper = document.querySelector('.swiper-container')['swiper'];
     swiper.slideNext();
   }
-
-  onViewTitleChanged(title){
-    this.viewTitle = title;
-  }
-
+  
   async onEventSelected(event){
     let start = formatDate(event.startTime, 'medium', this.locale);
     let end = formatDate(event.endTime, 'medium', this.locale);

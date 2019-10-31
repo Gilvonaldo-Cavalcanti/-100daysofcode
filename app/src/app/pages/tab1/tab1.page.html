@@ -1,8 +1,10 @@
-<ion-header >
+<ion-header>
   <ion-toolbar>
     <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>
-      Treinos
+      <div class="ion-text-center">
+        Treinos
+      </div>
     </ion-title>
   </ion-toolbar>
 
@@ -10,57 +12,58 @@
 
 <ion-content>
 
-    <ion-list *ngIf="!treinos.length">
-      <ion-item *ngFor="let item of [0, 1, 2]">
-        <ion-avatar slot="start">
-          <ion-icon name="clipboard"></ion-icon>
-        </ion-avatar>
-        <ion-label>
-          <h3>
-            <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
-          </h3>
-          <p>
-            <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
-          </p>
-          <p>
-            <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
-          </p>
-        </ion-label>
+  <ion-list *ngIf="!treinos.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-icon name="clipboard"></ion-icon>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
 
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+
+    <ion-card *ngFor="let treino of treinos">
+
+      <ion-card-header>
+        <ion-card-title>{{ treino.nomeTreino }}</ion-card-title>
+        <ion-card-subtitle>{{ treino.dia }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+
+        <ion-row style="border-bottom: groove;" *ngFor="let i of getExercicio(treino.id)">
+
+          <ion-col col-4>
+            <ion-label>{{ i }}</ion-label>
+          </ion-col>
+
+        </ion-row>
+
+      </ion-card-content>
+
+      <ion-item color="novacor">
+        <ion-icon button name="trash" (click)="removeTreino(treino.id)" slot="start"></ion-icon>
+        <ion-icon name="archive" slot="start" (click)="arquivarTreino(treino)"></ion-icon>
+        <ion-button fill="outline" slot="end" [routerLink]="['treino-detalhe/', treino.id]">Detalhes</ion-button>
       </ion-item>
-    </ion-list>
 
-    <ion-list>
+    </ion-card>
 
-      <ion-card *ngFor="let treino of treinos">
+  </ion-list>
 
-        <ion-card-header>
-          <ion-card-title>{{ treino.nomeTreino }}</ion-card-title>
-          <ion-card-subtitle>{{ treino.dia }}</ion-card-subtitle>
-        </ion-card-header>
 
-        <ion-card-content>
-
-          <ion-row style="border-bottom: groove;" *ngFor="let i of getExercicio(treino.id)">
-
-            <ion-col col-4>
-              <ion-label>{{ i }}</ion-label>
-            </ion-col>
-
-          </ion-row>
-
-        </ion-card-content>
-
-        <ion-item color="novacor">
-          <ion-icon button name="trash" (click)="removeTreino(treino.id)" slot="start"></ion-icon>
-          <ion-button fill="outline" slot="end" [routerLink]="['treino-detalhe/', treino.id]">Detalhes</ion-button>
-        </ion-item>
-
-      </ion-card>
-
-    </ion-list>
-
-  
 
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">

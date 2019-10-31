@@ -31,6 +31,9 @@ export class TreinoService {
     return this.treinoCollection.add(treino);
   }
 
+  alterarTreino(treino: Treino){
+    return this.treinoCollection.doc(treino.id).update(treino);
+  }
   getTreino(id: string){
     return this.treinoCollection.doc<Treino>(id).valueChanges();
   }

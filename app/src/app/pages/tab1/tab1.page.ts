@@ -38,7 +38,7 @@ export class Tab1Page implements OnInit {
     let exercicios: Array<string> = [];
 
     for (let treino of this.treinos) {
-      if (Object.is(treino.id, id)) {
+      if (Object.is(treino.id, id) && !treino.arquivado) {
 
         if (treino.exercicios != null) {
           for (let a of treino.exercicios) {
@@ -76,11 +76,11 @@ export class Tab1Page implements OnInit {
         message: 'Clique ok para confirmar!',
         buttons: [
           {
-            text: 'notOk',
+            text: 'Cancelar',
             handler: _=> reject(false)
         },
         {
-            text: 'ok',
+            text: 'Ok',
             handler: _=> resolve(true)
         }
         ]
@@ -89,6 +89,10 @@ export class Tab1Page implements OnInit {
 
   }
 
+  arquivarTreino(treino: Treino){
+    treino.arquivado = true;
+    return this.treinoService.alterarTreino(treino);
+  }
 
   async removeTreino(id: string) {
     let opc = await this.presentAlert();

@@ -5,5 +5,6 @@ export interface Treino {
     userId?: string,
     descricao?: string,
     criadoEm?: string,
+    arquivado?: boolean,
     exercicios?: [string];
 }
