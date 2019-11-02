@@ -9,7 +9,7 @@
 </ion-header>
 <ion-content>
 
-  <div class=circulo (click)="novoRegistroTreino()">
+  <div class="circulo" (click)="novoRegistroTreino()">
     <img src="/assets/img/halter.png">
   </div>
 
@@ -17,7 +17,7 @@
     <h5 class="ion-text-center">Conclusão Semanal</h5>
     <ion-row>
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Domingo'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Domingo
@@ -26,7 +26,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Segunda'] == true ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Segunda
@@ -35,7 +35,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Terca'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Terça
@@ -44,7 +44,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Quarta'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Quarta
@@ -53,7 +53,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Quinta'] == 'true' ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Quinta
@@ -62,7 +62,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Sexta'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Sexta
@@ -71,7 +71,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Sabado'] == true ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Sábado
@@ -91,23 +91,32 @@
 
       <ion-item>
         Nível:
+        <ion-note slot="end">{{ registreino.nivel || 'Iniciante' }}</ion-note>
       </ion-item>
 
       <ion-item>
         Pontuação:
+        <ion-note slot="end">{{ registreino.pontuacao || 0 }}</ion-note>
       </ion-item>
 
       <ion-item>
         Ofensiva:
+        <ion-note slot="end">{{ registreino.ofensiva || 0 }}</ion-note>
       </ion-item>
 
       <ion-item>
         Dias de descanso:
+        <ion-note slot="end">{{ registreino.diasDeDescanso || 0 }}</ion-note>
       </ion-item>
       <ion-item>
         Total de dias de treino:
+        <ion-note slot="end">{{ registreino.totalDeDiasDeTreino || 0 }}</ion-note>
       </ion-item>
     </ion-list>
+  </div>
+
+  <div class="info-premiacoes">
+
   </div>
 
   <div class="dica">

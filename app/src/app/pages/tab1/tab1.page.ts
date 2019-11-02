@@ -20,7 +20,6 @@ export class Tab1Page implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private treinoService: TreinoService,
-
   ) {
 
     this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {

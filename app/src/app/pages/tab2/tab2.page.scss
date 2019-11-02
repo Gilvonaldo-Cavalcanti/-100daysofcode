@@ -43,11 +43,28 @@ ion-icon {
     margin-bottom: 15%;
     padding: 40px;
     border: 1px solid black;
+    background: linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    border: 1px solid #CCCCCE;
+}
+
+.circulo:active {
+    position:relative;
+    top:2px;
 }
 
 .gamificacao {
     margin-top: 0;
+    
 }
+
+.ion-color-cor-conclusao-semanal {
+    --ion-color-base: var(--ion-color-cor-conclusao-semanal);
+    --ion-color-base-rgb: var(--ion-color-cor-conclusao-semanal-rgb);
+    --ion-color-contrast: var(--ion-color-cor-conclusao-semanal-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-cor-conclusao-semanal-contrast-rgb);
+    --ion-color-shade: var(--ion-color-cor-conclusao-semanal-shade);
+    --ion-color-tint: var(--ion-color-cor-conclusao-semanal-tint);
+  }
 
 .img {
     width: 10%;

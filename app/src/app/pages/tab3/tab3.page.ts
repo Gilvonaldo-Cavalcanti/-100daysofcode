@@ -40,7 +40,7 @@ export class Tab3Page implements OnInit {
         message: 'Clique ok para confirmar!',
         buttons: [
           {
-            text: 'notOk',
+            text: 'Cancelar',
             handler: _=> reject(false)
         },
         {
