@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
+import {  MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -12,9 +13,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
- 
+  private isLooged: boolean;
 
   constructor(
+    public menuCtrl: MenuController,
     private router: Router,
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -22,6 +24,8 @@ export class AppComponent {
     private authService: AuthService,
   ) {
     this.initializeApp();
+    this.isLooged = authService.isLogged();
+    
   }
 
   initializeApp() {
@@ -33,9 +37,12 @@ export class AppComponent {
 
 
   sair() {
-    this.router.navigateByUrl("login", { skipLocationChange: true });
+    console.log("Tá logado? => "+this.isLooged)
+    //this.menuCtrl.close();
+    //this.router.navigateByUrl("login", { skipLocationChange: true });
     this.authService.logout();
-
+    console.log("(Depois) Tá logado? => "+this.isLooged)
   }
+
 
 }

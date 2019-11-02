@@ -1,9 +1,27 @@
 ion-list ion-card {
-
     background-color: #e6e6e6;
-    
 }
 
-ion-toolbar {
-	--ion-color-primary: #000000;
+ion-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+}
+ion-menu-button {
+    z-index: 2;
+}
+
+ion-icon {
+    z-index: 2;
+    font-size: 23px;
+    padding: 5%;
+}
+
+.botoes-card {
+    z-index: 2;
 }

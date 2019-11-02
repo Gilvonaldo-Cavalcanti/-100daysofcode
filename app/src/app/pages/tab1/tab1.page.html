@@ -2,10 +2,9 @@
   <ion-toolbar>
     <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>
-      <div class="ion-text-center">
-        Treinos
-      </div>
+          Fichas de Treinos       
     </ion-title>
+    <ion-icon slot="end" name="funnel"></ion-icon>
   </ion-toolbar>
 
 </ion-header>
@@ -13,19 +12,28 @@
 <ion-content>
 
   <ion-list *ngIf="!treinos.length">
-    <ion-item *ngFor="let item of [0, 1, 2]">
-      <ion-avatar slot="start">
-        <ion-icon name="clipboard"></ion-icon>
-      </ion-avatar>
+    <ion-item *ngFor="let item of [0, 1]">
       <ion-label>
         <h3>
-          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </h3>
+        <h3>
+          <ion-skeleton-text animated style="width: 20%"></ion-skeleton-text>
         </h3>
         <p>
-          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
         </p>
         <p>
-          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
         </p>
       </ion-label>
 
@@ -53,18 +61,18 @@
 
       </ion-card-content>
 
+      <div class="botoes-card">
       <ion-item color="novacor">
-        <ion-icon button name="trash" (click)="removeTreino(treino.id)" slot="start"></ion-icon>
-        <ion-icon name="archive" slot="start" (click)="arquivarTreino(treino)"></ion-icon>
-        <ion-button fill="outline" slot="end" [routerLink]="['treino-detalhe/', treino.id]">Detalhes</ion-button>
+       
+            <ion-icon button name="trash" (click)="removeTreino(treino.id)" slot="start"></ion-icon>
+            <ion-icon name="archive" slot="start" (click)="arquivarTreino(treino)"></ion-icon>
+            <ion-button fill="outline" slot="end" [routerLink]="['treino-detalhe/', treino.id]">Detalhes</ion-button>
+        
       </ion-item>
-
+    </div>
     </ion-card>
 
   </ion-list>
-
-
-
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="pageaddtreino()" color="light">

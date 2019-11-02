@@ -25,5 +25,12 @@ export class AuthService {
     return this.afa.auth;
   }
 
+  isLogged(){
+    if (this.afa.auth != null){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

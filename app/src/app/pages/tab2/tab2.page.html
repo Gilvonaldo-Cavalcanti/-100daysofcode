@@ -2,81 +2,119 @@
   <ion-toolbar>
     <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>
-      <div class="ion-text-center">
-        Treinos Realizados
-      </div>
+      Treinos Realizados
     </ion-title>
+    <ion-icon slot="end" name="funnel"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content>
 
+  <div class=circulo (click)="novoRegistroTreino()">
+    <img src="/assets/img/halter.png">
+  </div>
 
-  <ion-card>
-    <ion-card-header tappable (click)="collapseCard = !collapseCard">
-      <ion-card-title>Marcar Treino</ion-card-title>
-    </ion-card-header>
-    <ion-card-content *ngIf="!collapseCard">
+  <div class="conclusao-semanal">
+    <h5 class="ion-text-center">Conclusão Semanal</h5>
+    <ion-row>
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Domingo
+          </div>
+        </ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Segunda
+          </div>
+        </ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Terça
+          </div>
+        </ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Quarta
+          </div>
+        </ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Quinta
+          </div>
+        </ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Sexta
+          </div>
+        </ion-label>
+      </ion-col>
+
+      <ion-col>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <ion-label>
+          <div class="dia">
+            Sábado
+          </div>
+        </ion-label>
+      </ion-col>
+
+    </ion-row>
+  </div>
+
+  <div class=gamificacao>
+    <h5 class="ion-text-center">
+      Estatísticas
+    </h5>
+
+    <ion-list>
 
       <ion-item>
-        <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+        Nível:
+      </ion-item>
+
+      <ion-item>
+        Pontuação:
+      </ion-item>
+
+      <ion-item>
+        Ofensiva:
+      </ion-item>
+
+      <ion-item>
+        Dias de descanso:
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="Descrição" [(ngModel)]="event.desc"></ion-input>
+        Total de dias de treino:
       </ion-item>
-      <ion-item>
-        <ion-label>Início</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MM D:HH:mm" [(ngModel)]="event.startTime"
-          [min]="minDate"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>Fim</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY HH:mm" pickerFormat="MM D:HH:mm" [(ngModel)]="event.endTime"
-          [min]="minDate"></ion-datetime>
-      </ion-item>
-      <ion-item>
-        <ion-label>Todo dia?</ion-label>
-        <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
-      </ion-item>
-      <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">Adicionar Evento
-      </ion-button>
+    </ion-list>
+  </div>
 
-    </ion-card-content>
-
-  </ion-card>
-
-  <ion-row>
-    <ion-col size="4">
-      <ion-button expand="block]" color="medium"
-        (click)="changeMode('month')">Mês</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button color="medium" expand="block]" color="medium"
-        (click)="changeMode('week')">Semana</ion-button>
-    </ion-col>
-    <ion-col>
-      <ion-button color="medium" expand="block]" color="medium"
-        (click)="changeMode('day')">Dia</ion-button>
-    </ion-col>
-
-    <!--Move back one screen of the slides -->
-    <ion-col size="6" text-left>
-      <ion-button color="medium" fill="clear" (click)="back()">
-        <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-col>
-
-    <!-- Move forward one screen of the slides -->
-    <ion-col size="6" text-right>
-      <ion-button color="medium" fill="clear" (click)="next()">
-        <ion-icon name="arrow-forward" slot="icon-only"></ion-icon>
-      </ion-button>
-    </ion-col>
-
-  </ion-row>
-
-  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate"
-    (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)"
-    (onTimeSelected)="onTimeSelected($event)" startHour="6" endHour="20" step="30" startingDayWeek="1" >
-  </calendar>
+  <div class="dica">
+    <h5 class="ion-text-center">Dica</h5>
+    <p class="text-info recuo">
+      O trabalho e a dedicação são a única estrada que leva ao verdadeiro sucesso.
+    </p>
+  </div>
 
 </ion-content>
