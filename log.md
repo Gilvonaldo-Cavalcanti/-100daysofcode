@@ -126,3 +126,59 @@
 **Comentários:** Correção de bugs em rotas e na persistencia com o banco, adição de proteção de rotas com guards e implementação da view de avaliações.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 018: 25 de Outubro de 2019
+
+**Progresso do dia:** Correção de bugs em avaliações.
+
+**Comentários:** Correção de alguns bugs na aba3 do app, em listagem de avaliações.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 019: 26 de Outubro de 2019
+
+**Progresso do dia:** Finalização da listagem de exercícios.
+
+**Comentários:** Finalização da listagem de exercícios na aba1 do app, card de fichas de treinos com listagem de exercícios.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 020: 27 de Outubro de 2019
+
+**Progresso do dia:** Ajustes no design.
+
+**Comentários:** Melhorias e pequenos ajustes no design da tela de login, tab1 e tab2. Implementação do ion-menu com links (perfil, sobre, reportar bugs, treinos arquivados, avaliações arquivadas).
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 021: 28 de Outubro de 2019
+
+**Progresso do dia:** Adição de validações para exclusão.
+
+**Comentários:** Adição de alertas em fichas de treinos e avaliações, para confirmar exclusão das mesmas.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 022: 29 de Outubro de 2019
+
+**Progresso do dia:** Ajustes nas 3 tabs do app.
+
+**Comentários:** Pequenos ajustes em tab1, tab2 e tab3, e finalização da remoção de treinos e avaliações.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 023: 30 de Outubro de 2019
+
+**Progresso do dia:** Ajustes no calendário e adição de arquivar em treinos.
+
+**Comentários:** Ajustes no ion2calendar, mudança do idioma e das cores dos botões de controle do mesmo. E adição da funcionalidade de arquivar em treinos.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 024: 01 de Novembro de 2019
+
+**Progresso do dia:** Modificações na aba progresso.
+
+**Comentários:** Modificações na aba progresso com a mudança de estratégia. Remoção do ion2calendar e adição de marcações de treinos com "gamificação" e acompanhamento do hábito treinar.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
