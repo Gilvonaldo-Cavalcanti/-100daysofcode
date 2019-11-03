@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Registrotreino } from 'src/app/interfaces/registrotreino';
-import { Observable } from 'rxjs';
-import { AlertController } from '@ionic/angular';
+import { Subscription, Observable } from 'rxjs';
+import { AlertController, ToastController } from '@ionic/angular';
+import { RegistroTreinoService } from 'src/app/services/registro-treino.service';
 
 
 @Component({
@@ -17,9 +18,16 @@ export class Tab2Page implements OnInit {
     "Quarta": false, "Quinta": false, "Sexta": false, "Sabado": false
   };
 
+  private registrosDeTreinos: Array<Registrotreino>;
+  private registTreinosSubscription: Subscription;  
   private registreino: Registrotreino = {};
 
-  constructor(private alertController: AlertController) {
+  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService) {
+
+    this.registTreinosSubscription = this.registreinoService.getRegistrosDeTreinos().subscribe(data => {
+      this.registrosDeTreinos = data;
+    }
+    )
 
   }
 
@@ -52,32 +60,47 @@ export class Tab2Page implements OnInit {
     var pont: Number = this.registreino.pontuacao;
 
     if (pont == null) {
-      this.registreino.pontuacao = 0;
+      this.registreino.pontuacao = 20;
     } else {
       this.registreino.pontuacao += 20;
     }
   }
 
-
   async novoRegistroTreino() {
 
-    let opc = await this.presentAlert();
-    if (opc && !this.registreino.treinou) {
+    if (!this.registreino.treinou) {
 
-      this.registreino.treinou = true;
-      this.registreino.semana = [""];
+      let opc = await this.presentAlert();
+      if (opc) {
+        this.registreino.treinou = true;
+        this.registreino.semana = [""];
 
-      let dataAtual = new Date();
-      this.semana[this.dias[dataAtual.getDay()]] = true;
+        let dataAtual = new Date();
+        this.semana[this.dias[dataAtual.getDay()]] = true;
 
-      for (let a of this.dias) {
-        this.registreino.semana.push(this.semana[a]);
+        for (let a of this.dias) {
+          this.registreino.semana.push(this.semana[a]);
+        }
+        this.atualizarPontuacao();
+        this.atualizarNivel();
+
+        try {
+          await this.registreinoService.addRegistroDeTreinos(this.registreino);
+        } catch (error){
+          this.presentToast("Erro ao salvar");
+        }
+        
       }
-
-      this.atualizarPontuacao();
-      this.atualizarNivel();
-
+    } else {
+      this.presentToast("Você já treinou hoje!");
     }
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastCtrl.create({
+      message, duration: 2000
+    });
+    toast.present();
   }
 
   private presentAlert(): boolean | Promise<boolean> | Observable<boolean> {
@@ -99,6 +122,5 @@ export class Tab2Page implements OnInit {
       }).then(alert => alert.present());
     });
   }
-
 
 }

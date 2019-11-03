@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'treino', loadChildren: './pages/treino/treino.module#TreinoPageModule', canActivate: [AuthGuard] },
   { path: 'treino-detalhe/:id', loadChildren: './pages/treino-detalhe/treino-detalhe.module#TreinoDetalhePageModule', canActivate: [AuthGuard] },
   { path: 'avaliacao', loadChildren: './pages/avaliacao/avaliacao.module#AvaliacoesPageModule', canActivate: [AuthGuard] },
+  { path: 'sobre', loadChildren: './pages/sobre/sobre.module#SobrePageModule', canActivate: [AuthGuard] },
 ];
 
 @NgModule({

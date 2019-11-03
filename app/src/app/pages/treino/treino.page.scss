@@ -7,3 +7,12 @@ ion-title {
     height: 100%;
     text-align: center;
 }
+
+.ion-color-menu-superior {
+    --ion-color-base: var(--ion-color-menu-superior);
+    --ion-color-base-rgb: var(--ion-color-menu-superior-rgb);
+    --ion-color-contrast: var(--ion-color-menu-superior-contrast);
+    --ion-color-contrast-rgb: var(--ion-color-menu-superior-contrast-rgb);
+    --ion-color-shade: var(--ion-color-menu-superior-shade);
+    --ion-color-tint: var(--ion-color-menu-superior-tint);
+}

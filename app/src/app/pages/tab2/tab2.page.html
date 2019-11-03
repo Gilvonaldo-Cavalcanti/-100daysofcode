@@ -1,10 +1,9 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="menu-superior">
     <ion-menu-button slot="start"></ion-menu-button>
     <ion-title>
       Treinos Realizados
     </ion-title>
-    <ion-icon slot="end" name="funnel"></ion-icon>
   </ion-toolbar>
 </ion-header>
 <ion-content>
@@ -26,7 +25,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Segunda'] == true ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Segunda'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Segunda
@@ -53,7 +52,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Quinta'] == 'true' ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Quinta'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Quinta
@@ -71,7 +70,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Sabado'] == true ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="semana['Sabado'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Sábado

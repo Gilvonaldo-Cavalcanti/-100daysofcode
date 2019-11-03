@@ -1,3 +1,4 @@
+
 .ion-color-menu-superior {
     --ion-color-base: var(--ion-color-menu-superior);
     --ion-color-base-rgb: var(--ion-color-menu-superior-rgb);
@@ -6,3 +7,25 @@
     --ion-color-shade: var(--ion-color-menu-superior-shade);
     --ion-color-tint: var(--ion-color-menu-superior-tint);
 }
+
+.logo-sobre {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 90px 1px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1;
+}
+.img {
+    margin-top: 6%;
+    max-width:65%;
+    max-height:55%; 
+
+}
+
+.can-go-back ion-back-button {
+    display: block;
+  }
+
