@@ -182,3 +182,20 @@
 **Comentários:** Modificações na aba progresso com a mudança de estratégia. Remoção do ion2calendar e adição de marcações de treinos com "gamificação" e acompanhamento do hábito treinar.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 025: 02 de Novembro de 2019
+
+**Progresso do dia:** Modificações na aba progresso.
+
+**Comentários:** Classificação do nível do usuário, estatísticas e dicas motivacionais de treino.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+
+### Dia 026: 03 de Novembro de 2019
+
+**Progresso do dia:** Modificações na aba progresso.
+
+**Comentários:** Verificação se o usuário já realizou um treino no dia, com exibição de toast. Adição de um service, firebase, para CRUD em registro de treinos e criação da página sobre com link no menu superior.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
