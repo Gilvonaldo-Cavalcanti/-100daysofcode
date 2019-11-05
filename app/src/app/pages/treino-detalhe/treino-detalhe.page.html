@@ -1,12 +1,53 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Exemplo de Treino (Detalhe)</ion-title>
+  <ion-toolbar color="menu-superior">
+    <ion-title>Detalhes</ion-title>
     <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-      </ion-buttons>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <ion-card>
+
+    <div class="detalhes-treino">
+
+      <div class="ion-text-center">
+        <h5>Detalhes do treino criado</h5>
+      </div>
+
+      <ion-row style="border-bottom: groove;">
+        <ion-col align-self-start>Grupo Muscular:</ion-col>
+        <ion-col align-self-end>{{ treino.nomeTreino }}</ion-col>
+      </ion-row>
+
+      <ion-row style="border-bottom: groove;">
+        <ion-col align-self-start>Dia:</ion-col>
+        <ion-col align-self-end>{{ treino.dia }}</ion-col>
+      </ion-row>
+
+      <ion-row style="border-bottom: groove;">
+        <ion-col align-self-start>Criado em:</ion-col>
+        <ion-col align-self-end>{{ treino.criadoEm }}</ion-col>
+      </ion-row>
+
+      <div class="ion-text-center">
+        <h5>Exercícios</h5>
+      </div>
+
+      <ion-row style="border-bottom: groove;" *ngFor="let i of getExercicio()">
+        <p>{{ i }}</p>
+      </ion-row>
+
+      <div class="ion-text-center">
+        <h5>Anotações</h5>
+      </div>
+
+      <ion-row>
+        <p>{{ treino.descricao }}</p>
+      </ion-row>
+
+    </div>
+  </ion-card>
 </ion-content>

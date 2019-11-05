@@ -3,6 +3,7 @@ import { Registrotreino } from 'src/app/interfaces/registrotreino';
 import { Subscription, Observable } from 'rxjs';
 import { AlertController, ToastController } from '@ionic/angular';
 import { RegistroTreinoService } from 'src/app/services/registro-treino.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class Tab2Page implements OnInit {
   private registTreinosSubscription: Subscription;  
   private registreino: Registrotreino = {};
 
-  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService) {
+  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService, private authService: AuthService,) {
 
     this.registTreinosSubscription = this.registreinoService.getRegistrosDeTreinos().subscribe(data => {
       this.registrosDeTreinos = data;
@@ -85,6 +86,7 @@ export class Tab2Page implements OnInit {
         this.atualizarNivel();
 
         try {
+          this.registreino.userId = this.authService.getAuth().currentUser.uid;
           await this.registreinoService.addRegistroDeTreinos(this.registreino);
         } catch (error){
           this.presentToast("Erro ao salvar");

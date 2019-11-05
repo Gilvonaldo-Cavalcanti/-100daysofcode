@@ -3,7 +3,7 @@
 
     <ion-menu>
       <ion-header>
-        <ion-toolbar>
+        <ion-toolbar color="menu-superior">
           <ion-title>Menu</ion-title>
         </ion-toolbar>
       </ion-header>
@@ -12,27 +12,27 @@
         <ion-list>
 
           <ion-item>
-            <ion-icon name="person"></ion-icon>
+            <ion-icon color="menu-superior" name="person"></ion-icon>
             <ion-label>Meu Perfil</ion-label>
           </ion-item>
 
-          <ion-item button [routerLink]="['sobre']">
-            <ion-icon name="information-circle-outline"></ion-icon>
+          <ion-item  button [routerLink]="['sobre']">
+            <ion-icon color="menu-superior" name="information-circle-outline"></ion-icon>
             <ion-label>Sobre</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-icon name="archive"></ion-icon>
+          <ion-item >
+            <ion-icon color="menu-superior" name="archive"></ion-icon>
               <ion-label>Treinos Arquivados</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-icon name="archive"></ion-icon>
+          <ion-item >
+            <ion-icon color="menu-superior" name="archive"></ion-icon>
             <ion-label>Avaliações Arquivadas</ion-label>
           </ion-item>
 
-          <ion-item>
-            <ion-icon name="bug">Reportar Bugs</ion-icon>
+          <ion-item >
+            <ion-icon color="menu-superior" name="bug">Reportar Bugs</ion-icon>
             <ion-label>Reportar Bugs</ion-label>
           </ion-item>
 
@@ -41,7 +41,7 @@
 
       <ion-footer>
         <ion-toolbar>
-          <ion-button (click)='sair()' fill="clear" color="dark" expand="block">Sair</ion-button>
+          <ion-button color="menu-superior" (click)='sair()' fill="clear" expand="block">Sair</ion-button>
         </ion-toolbar>
 
       </ion-footer>
