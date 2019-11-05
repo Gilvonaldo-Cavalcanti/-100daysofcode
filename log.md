@@ -199,3 +199,11 @@
 **Comentários:** Verificação se o usuário já realizou um treino no dia, com exibição de toast. Adição de um service, firebase, para CRUD em registro de treinos e criação da página sobre com link no menu superior.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 027: 04 de Novembro de 2019
+
+**Progresso do dia:** Criação da página de detalhes de fichas de treinos.
+
+**Comentários:** Criação da página de visualização de fichas de treinos. Obs.: Estava faltando o redirect para a página de visualização, o que foi feito passando o id do treino para recuperação dos dados do mesmo na página.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
