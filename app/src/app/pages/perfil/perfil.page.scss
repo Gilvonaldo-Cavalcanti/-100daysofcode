@@ -1,13 +1,3 @@
-
-ion-list ion-card {
-    background-color: #e6e6e6;
-    
-    ion-item-divider {
-        background-color: #e6e6e6;
-    }
-
-}
-
 ion-title {
     position: absolute;
     top: 0;
@@ -16,11 +6,6 @@ ion-title {
     width: 100%;
     height: 100%;
     text-align: center;
-    z-index: 1;
-
-}
-ion-menu-button {
-    z-index: 2;
 }
 
 .ion-color-menu-superior {

@@ -24,23 +24,32 @@ export class Tab1Page implements OnInit {
 
     this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {
       this.treinos = data;
-    }
-
-    )
-
+    });
   }
 
   ngOnInit() {
   }
 
+  
+  getTreinosSemArquivamento() {
+  /** Método que retorna todas as fichas de treinos sem arquivamento */  
+    let treinosSemArquivamento = new Array<Treino>();
+    for (let i of this.treinos) {
+      if (!i.arquivado) {
+        treinosSemArquivamento.push(i);
+      }
+    }
+    return treinosSemArquivamento;
+  }
 
   getExercicio(id: string): Array<string> {
+  /** Método que retorna todos os exercícios dos treinos */
     let exercicios: Array<string> = [];
 
     for (let treino of this.treinos) {
-      if (Object.is(treino.id, id) && !treino.arquivado) {
+      if (Object.is(treino.id, id)) {
 
-        if (treino.exercicios != null) {
+        if (treino.exercicios) {
           for (let a of treino.exercicios) {
             exercicios.push(a);
           }
@@ -61,15 +70,12 @@ export class Tab1Page implements OnInit {
     this.router.navigateByUrl("treino-detalhe", { skipLocationChange: true });
   }
 
-
-
   ngOnDestroy() {
     this.treinoSubscription.unsubscribe();
   }
 
-
   private presentAlert(): boolean | Promise<boolean> | Observable<boolean> {
- 
+
     return new Promise((resolve: any, reject: any) => {
       this.alertController.create({
         header: 'Tem certeza que deseja excluir esse treino?',
@@ -77,28 +83,28 @@ export class Tab1Page implements OnInit {
         buttons: [
           {
             text: 'Cancelar',
-            handler: _=> reject(false)
-        },
-        {
+            handler: _ => reject(false)
+          },
+          {
             text: 'Ok',
-            handler: _=> resolve(true)
-        }
+            handler: _ => resolve(true)
+          }
         ]
       }).then(alert => alert.present());
     });
 
   }
 
-  arquivarTreino(treino: Treino){
+  arquivarTreino(treino: Treino) {
     treino.arquivado = true;
     return this.treinoService.alterarTreino(treino);
   }
 
   async removeTreino(id: string) {
     let opc = await this.presentAlert();
-    if (opc){
+    if (opc) {
       return this.treinoService.removeTreino(id);
-    } 
+    }
   }
 
 }

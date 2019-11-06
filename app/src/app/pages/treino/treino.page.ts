@@ -78,6 +78,8 @@ export class TreinoPage implements OnInit {
         this.treino.exercicios.push(this.myForm.value[i]);
       }
       
+      this.treino.arquivado = false;
+
       try {
         await this.treinoService.addTreino(this.treino);
         await this.loading.dismiss();

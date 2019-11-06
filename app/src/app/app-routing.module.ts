@@ -11,7 +11,9 @@ const routes: Routes = [
   { path: 'treino', loadChildren: './pages/treino/treino.module#TreinoPageModule', canActivate: [AuthGuard] },
   { path: 'treino-detalhe/:id', loadChildren: './pages/treino-detalhe/treino-detalhe.module#TreinoDetalhePageModule', canActivate: [AuthGuard] },
   { path: 'avaliacao', loadChildren: './pages/avaliacao/avaliacao.module#AvaliacoesPageModule', canActivate: [AuthGuard] },
-  { path: 'sobre', loadChildren: './pages/sobre/sobre.module#SobrePageModule', canActivate: [AuthGuard] },
+  { path: 'treinosarquivados', loadChildren: './pages/treinosarquivados/treinosarquivados.module#TreinosarquivadosPageModule', canActivate: [AuthGuard]  },
+  { path: 'avaliacoesarquivadas', loadChildren: './pages/avaliacoesarquivadas/avaliacoesarquivadas.module#AvaliacoesarquivadasPageModule', canActivate: [AuthGuard] },
+  { path: 'perfil', loadChildren: './pages/perfil/perfil.module#PerfilPageModule', canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -1,11 +1,10 @@
 <ion-header>
   <ion-toolbar color="menu-superior">
-    <ion-menu-button slot="start"></ion-menu-button>
-    <ion-title>
-          Fichas de Treinos       
-    </ion-title>
+    <ion-title>Fichas Arquivadas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
-
 </ion-header>
 
 <ion-content>
@@ -41,7 +40,7 @@
 
   <ion-list >
 
-    <ion-card *ngFor="let treino of getTreinosSemArquivamento()">
+    <ion-card *ngFor="let treino of getTreinosComArquivamento()">
 
       <ion-card-header>
         <ion-card-title>{{ treino.nomeTreino }}</ion-card-title>
@@ -62,21 +61,13 @@
 
       <div class="botoes-card">
       <ion-item color="novacor">
-       
-            <ion-icon color="menu-superior" button name="trash" (click)="removeTreino(treino.id)" slot="start"></ion-icon>
-            <ion-icon color="menu-superior" button name="archive" slot="start" (click)="arquivarTreino(treino)"></ion-icon>
-            <ion-button color="menu-superior" fill="outline" slot="end" [routerLink]="['/treino-detalhe/', treino.id]">Detalhes</ion-button>
+        
+          <ion-icon color="menu-superior" button name="add-circle-outline" slot="end" (click)="desarquivarTreino(treino)"></ion-icon>      
         
       </ion-item>
     </div>
     </ion-card>
 
   </ion-list>
-
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="pageaddtreino()" color="light">
-      <ion-icon color="menu-superior" name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
 
 </ion-content>
