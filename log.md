@@ -207,3 +207,11 @@
 **Comentários:** Criação da página de visualização de fichas de treinos. Obs.: Estava faltando o redirect para a página de visualização, o que foi feito passando o id do treino para recuperação dos dados do mesmo na página.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 028: 05 de Novembro de 2019
+
+**Progresso do dia:** Criação da página de treinos arquivados e outras.
+
+**Comentários:** Criação da página de treinos arquivados, substituição da página sobre por um alert, criação da página de avaliações arquivadas e perfil do usuário.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
