@@ -215,3 +215,11 @@
 **Comentários:** Criação da página de treinos arquivados, substituição da página sobre por um alert, criação da página de avaliações arquivadas e perfil do usuário.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 029: 06 de Novembro de 2019
+
+**Progresso do dia:** Alterações nas regras de negócio e outros ajustes.
+
+**Comentários:** Exibição apenas das avaliações e fichas feitas por o usuário criador; ion-menu desabilitado após o logout; bloqueio do modo paisagem no login e exibição das avaliações arquivadas em uma página à parte.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
