@@ -16,3 +16,7 @@ ion-title {
     --ion-color-shade: var(--ion-color-menu-superior-shade);
     --ion-color-tint: var(--ion-color-menu-superior-tint);
 }
+
+ion-list ion-card {
+    background-color: #e6e6e6;
+}

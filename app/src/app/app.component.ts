@@ -4,7 +4,6 @@ import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { MenuController } from '@ionic/angular';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,8 +11,6 @@ import { Observable } from 'rxjs';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-
-  private isLooged: boolean;
 
   constructor(
     private alertController: AlertController,
@@ -24,8 +21,6 @@ export class AppComponent {
     private authService: AuthService,
   ) {
     this.initializeApp();
-    this.isLooged = authService.isLogged();
-
   }
 
   initializeApp() {
@@ -35,10 +30,12 @@ export class AppComponent {
     });
   }
 
+  closeMenu() {
+    this.menuCtrl.close();
+  }
 
   sair() {
-    //this.menuCtrl.close();
-    //this.router.navigateByUrl("login", { skipLocationChange: true });
+    this.menuCtrl.enable(false);
     this.authService.logout();
   }
 

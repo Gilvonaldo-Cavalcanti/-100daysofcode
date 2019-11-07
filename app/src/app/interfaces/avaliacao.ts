@@ -13,5 +13,6 @@ export interface Avaliacao {
     pernaEsquerda?: string,
     peso?: string,
     altura?: string,
-    criadoEm?: string
+    criadoEm?: string, 
+    arquivado?: boolean,
 }

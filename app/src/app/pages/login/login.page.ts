@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, LoadingController, ToastController } from '@ionic/angular';
+import { IonSlides, LoadingController, ToastController, MenuController } from '@ionic/angular';
 import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
@@ -16,15 +16,19 @@ export class LoginPage implements OnInit {
   public userLogin: User = {};
   public userRegister: User = {};
   public loading: any;
-
+  private isLooged: boolean;
 
   constructor(
     public keyboard: Keyboard,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private authService: AuthService,
-    private router: Router
-  ) { }
+    private router: Router,
+    public menuCtrl: MenuController,
+
+  ) { 
+    this.isLooged = authService.isLogged();
+   }
 
   ngOnInit() {
   }
@@ -42,12 +46,16 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     try {
       await this.authService.login(this.userLogin);
+      this.menuCtrl.enable(this.isLooged);
       this.router.navigateByUrl("/", { skipLocationChange: true });
+
     } catch (error) {
       this.presentToast(error.message);
       console.error(error);
     } finally {
       this.loading.dismiss();
+      
+
     }
   }
 

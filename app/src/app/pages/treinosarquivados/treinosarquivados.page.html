@@ -9,7 +9,7 @@
 
 <ion-content>
 
-  <ion-list *ngIf="!treinos.length">
+  <ion-list *ngIf="!getTreinosComArquivamento().length">
     <ion-item *ngFor="let item of [0, 1]">
       <ion-label>
         <h3>

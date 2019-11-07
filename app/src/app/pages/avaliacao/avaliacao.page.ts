@@ -34,7 +34,7 @@ export class AvaliacaoPage implements OnInit {
     await this.presentLoading();
 
     this.avaliacao.userId = this.authService.getAuth().currentUser.uid;
-
+    this.avaliacao.arquivado = false;
     if (this.avaliacaoId) {
 
     } else {

@@ -39,6 +39,8 @@ export class AvaliacaoService {
     return this.avaliacaoCollection.doc(id).delete();
   }
 
-
+  alterarAvaliacao(avaliacao: Avaliacao){
+    return this.avaliacaoCollection.doc(avaliacao.id).update(avaliacao);
+  }
 
 }

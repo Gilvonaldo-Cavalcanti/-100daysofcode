@@ -4,6 +4,7 @@ import { Subscription, Observable } from 'rxjs';
 import { Avaliacao } from 'src/app/interfaces/avaliacao';
 import { AvaliacaoService } from 'src/app/services/avaliacao.service';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-tab3',
@@ -18,7 +19,8 @@ export class Tab3Page implements OnInit {
   constructor(
     private alertController: AlertController,
     private avaliacaoService: AvaliacaoService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
 
     this.avaliacaoSubscription = this.avaliacaoService.getAvaliacoes().subscribe(data => {
@@ -33,7 +35,7 @@ export class Tab3Page implements OnInit {
   }
 
   private presentAlert(): boolean | Promise<boolean> | Observable<boolean> {
- 
+
     return new Promise((resolve: any, reject: any) => {
       this.alertController.create({
         header: 'Tem certeza que deseja excluir essa avaliação?',
@@ -41,28 +43,44 @@ export class Tab3Page implements OnInit {
         buttons: [
           {
             text: 'Cancelar',
-            handler: _=> reject(false)
-        },
-        {
+            handler: _ => reject(false)
+          },
+          {
             text: 'ok',
-            handler: _=> resolve(true)
-        }
+            handler: _ => resolve(true)
+          }
         ]
       }).then(alert => alert.present());
     });
 
   }
 
+  getAvaliacoes() {
+    let aval = [];
 
-  async removeAvaliacao(id: string){
+    for (let i of this.avaliacoes){
+      if (i.userId == this.authService.getAuth().currentUser.uid && !i.arquivado){
+        aval.push(i);
+      }
+    }
+    return aval;
+
+  }
+  
+  async removeAvaliacao(id: string) {
     let opc = await this.presentAlert();
-    if (opc){
+    if (opc) {
       return this.avaliacaoService.removeAvaliacao(id);
-    }   
+    }
   }
 
   pageAddAvaliacao() {
     this.router.navigateByUrl("avaliacao", { skipLocationChange: true });
+  }
+
+  arquivarAvaliacao(avaliacao: Avaliacao){
+    avaliacao.arquivado = true;
+    return this.avaliacaoService.alterarAvaliacao(avaliacao);
   }
 
 }

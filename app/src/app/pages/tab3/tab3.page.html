@@ -9,9 +9,45 @@
 
 <ion-content>
 
+
+  <ion-list *ngIf="!getAvaliacoes().length">
+    <ion-item *ngFor="let item of [0, 1]">
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </h3>
+        <h3>
+          <ion-skeleton-text  animated style="width: 20%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 100%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
   <ion-list>
 
-    <div *ngFor="let avaliacao of avaliacoes">
+    <div *ngFor="let avaliacao of getAvaliacoes()">
 
       <ion-card>
 
@@ -25,7 +61,7 @@
             </ion-label>
 
           </ion-item>
-<!-- To do -->
+
           <ion-item-divider>
             <ion-label>Ombro:</ion-label>
             <ion-label slot="end">{{ avaliacao.ombro }}</ion-label>
@@ -89,7 +125,9 @@
         </div>
 
         <ion-item color="novacor">
-          <!-- To do -->
+          <ion-icon color="menu-superior" button name="trash" (click)="removeAvaliacao(avaliacao.id)" slot="start"></ion-icon>
+          <ion-icon color="menu-superior" button name="archive" slot="start" (click)="arquivarAvaliacao(avaliacao)"></ion-icon>
+            
         </ion-item>
       </ion-card>
     </div>

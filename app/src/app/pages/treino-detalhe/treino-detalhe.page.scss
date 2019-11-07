@@ -19,6 +19,7 @@ ion-title {
 .detalhes-treino {
     padding: 5%;
  }
- ion-icon {
-    z-index: 2;
- }
+ 
+ ion-list ion-card {
+    background-color: #e6e6e6;
+}

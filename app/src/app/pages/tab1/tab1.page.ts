@@ -4,6 +4,7 @@ import { Treino } from 'src/app/interfaces/treino';
 import { Subscription, Observable } from 'rxjs';
 import { TreinoService } from 'src/app/services/treino.service';
 import { AlertController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -20,6 +21,7 @@ export class Tab1Page implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private treinoService: TreinoService,
+    private authService: AuthService
   ) {
 
     this.treinoSubscription = this.treinoService.getTreinos().subscribe(data => {
@@ -35,7 +37,7 @@ export class Tab1Page implements OnInit {
   /** Método que retorna todas as fichas de treinos sem arquivamento */  
     let treinosSemArquivamento = new Array<Treino>();
     for (let i of this.treinos) {
-      if (!i.arquivado) {
+      if (!i.arquivado && i.userId == this.authService.getAuth().currentUser.uid) {
         treinosSemArquivamento.push(i);
       }
     }
