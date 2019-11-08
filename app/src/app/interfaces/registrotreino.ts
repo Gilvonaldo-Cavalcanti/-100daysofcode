@@ -8,5 +8,4 @@ export interface Registrotreino {
     totalDeDiasDeTreino?: string,
     datas?: [string],
     semana?: [string],
-    treinou?: boolean
 }

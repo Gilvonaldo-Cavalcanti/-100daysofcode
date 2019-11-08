@@ -8,9 +8,18 @@
 </ion-header>
 <ion-content>
 
-  <div class="circulo" (click)="novoRegistroTreino()">
-    <img src="/assets/img/halter.png">
+  <div class="fundo-registro">
+
+    <div class="circulo" (click)="novoRegistroTreino()">
+      <img src="/assets/img/halter.png">
+    </div>
+  
+    <div class="descanso" (click)="descanso()">
+      <img src="/assets/img/descanso.png">
+    </div>
+
   </div>
+  
 
   <div class="conclusao-semanal">
     <h5 class="ion-text-center">Conclusão Semanal</h5>
@@ -81,7 +90,7 @@
     </ion-row>
   </div>
 
-  <div class=gamificacao>
+  <div class="gamificacao">
     <h5 class="ion-text-center">
       Estatísticas
     </h5>

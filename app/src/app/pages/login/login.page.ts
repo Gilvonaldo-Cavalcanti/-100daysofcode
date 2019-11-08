@@ -4,11 +4,15 @@ import { User } from 'src/app/interfaces/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Keyboard } from '@ionic-native/keyboard/ngx';
+import { ScreenOrientation } from '@ionic-native/screen-orientation/ngx';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
+  providers: [
+    ScreenOrientation
+  ]
 })
 export class LoginPage implements OnInit {
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
@@ -25,10 +29,15 @@ export class LoginPage implements OnInit {
     private authService: AuthService,
     private router: Router,
     public menuCtrl: MenuController,
+    public screenOrientation: ScreenOrientation
 
   ) { 
     this.isLooged = authService.isLogged();
-   }
+    this.menuCtrl.enable(false);
+
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+
+  }
 
   ngOnInit() {
   }

@@ -29,7 +29,7 @@ export class Tab2Page implements OnInit {
       this.registrosDeTreinos = data;
     }
     )
-
+    
   }
 
   ngOnInit() { }
@@ -67,16 +67,21 @@ export class Tab2Page implements OnInit {
     }
   }
 
+
   async novoRegistroTreino() {
 
-    if (!this.registreino.treinou) {
+    let dataAtual = new Date();
+    this.registreino.datas = [""];
+    this.registreino.semana = [""];
 
+    if (!this.registreino.datas.includes(this.semana[this.dias[dataAtual.getDay()]])){
+    
       let opc = await this.presentAlert();
+    
       if (opc) {
-        this.registreino.treinou = true;
-        this.registreino.semana = [""];
 
-        let dataAtual = new Date();
+        this.registreino.datas.push(this.semana[this.dias[dataAtual.getDay()]]);
+    
         this.semana[this.dias[dataAtual.getDay()]] = true;
 
         for (let a of this.dias) {
@@ -95,6 +100,25 @@ export class Tab2Page implements OnInit {
       }
     } else {
       this.presentToast("Você já treinou hoje!");
+    }
+  }
+
+  async descanso(){
+
+    let dataAtual = new Date();
+    this.registreino.datas = [""];
+    this.registreino.semana = [""];
+
+    if (!this.registreino.datas.includes(this.semana[this.dias[dataAtual.getDay()]])){
+    
+      let opc = await this.presentAlert();
+    
+      if (opc) {
+
+        this.registreino.datas.push(this.semana[this.dias[dataAtual.getDay()]]);
+    
+        this.semana[this.dias[dataAtual.getDay()]] = true;
+      }
     }
   }
 

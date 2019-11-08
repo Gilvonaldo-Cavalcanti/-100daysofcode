@@ -18,6 +18,15 @@ ion-icon {
     padding: 5%;
 }
 
+.fundo-registro {
+    background-image: url('/assets/img/images.jpeg');
+ /* Center and scale the image nicely */
+ background-position: center;
+ background-repeat: no-repeat;
+ background-size: 100% 100%;
+ padding: 10%;
+}
+
 .conclusao-semanal {
 
     width: 100%;
@@ -39,16 +48,33 @@ ion-icon {
     height: 200px;
     background-color: #787373;
     margin: auto;
-    margin-top: 15%;
-    margin-bottom: 15%;
+    //margin-top: 15%;
+    //margin-bottom: 2%;
     padding: 40px;
-    border: 1px solid black;
     background: linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
     box-shadow: 3px 5px #888888;
 
 }
 
+.descanso {
+
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    background-color: #787373;
+    margin: auto;
+    padding: 2%;
+    background: linear-gradient(bottom, #E0E0E0, #F9F9F9 70%);
+    box-shadow: 3px 5px #888888;
+    margin-top: 2%;
+}
+
 .circulo:active {
+    position:relative;
+    top:2px;
+}
+
+.descanso:active {
     position:relative;
     top:2px;
 }
