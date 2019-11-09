@@ -72,6 +72,7 @@ export class LoginPage implements OnInit {
     await this.presentLoading();
     try {
       await this.authService.register(this.userRegister);
+      this.menuCtrl.enable(this.isLooged);
       this.router.navigateByUrl("/", { skipLocationChange: true });
     } catch (error) {
       this.presentToast(error.message);

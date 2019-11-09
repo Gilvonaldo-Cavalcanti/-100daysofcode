@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Registrotreino } from '../interfaces/registrotreino';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
+import { ConclusaoSemanal } from '../interfaces/conclusao-semanal';
+import { AuthService } from './auth.service';
 
 
 @Injectable({
@@ -10,9 +12,12 @@ import { map } from 'rxjs/operators';
 export class RegistroTreinoService {
 
   private registroDeTreinoCollection: AngularFirestoreCollection<Registrotreino>;
+  private conclusaoSemanalCollection: AngularFirestoreCollection<ConclusaoSemanal>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,private authService: AuthService,) {
     this.registroDeTreinoCollection = this.afs.collection<Registrotreino>('RegistroTreinos');
+    this.conclusaoSemanalCollection = this.afs.collection<ConclusaoSemanal>('conclusao-semanal');
+
   }
 
   getRegistrosDeTreinos() {
@@ -28,16 +33,38 @@ export class RegistroTreinoService {
     )
   }
 
-  addRegistroDeTreinos(registroTreinos: Registrotreino) {
+  getConclusaoSemanal(){
+    return this.conclusaoSemanalCollection.snapshotChanges().pipe(
+      map(actions => {
+        return actions.map(a => {
+          const data = a.payload.doc.data();
+          const userId = a.payload.doc.id;
+
+          return { userId, ...data };
+        });
+      })
+    )
+  }
+
+  addConclusaoSemanal(conclusaoSemanal: ConclusaoSemanal){
+    return this.conclusaoSemanalCollection.add(conclusaoSemanal);   
+  }
+
+  updateConclusaoSemanal(conclusaoSemanal: ConclusaoSemanal){
+    return this.conclusaoSemanalCollection.doc(conclusaoSemanal.userId).update(conclusaoSemanal);
+  }
+
+  addRegistroDeTreino(registroTreinos: Registrotreino){
     return this.registroDeTreinoCollection.add(registroTreinos);
+  }
+
+  updateRegistroDeTreino(registroTreinos: Registrotreino){
+    return this.registroDeTreinoCollection.doc(registroTreinos.id).update(registroTreinos);
   }
 
   getRegistroDeTreinos(id: string) {
     return this.registroDeTreinoCollection.doc<Registrotreino>(id).valueChanges();
   }
 
-  removeRegistroDeTreinos(id: string) {
-    return this.registroDeTreinoCollection.doc(id).delete();
-  }
 
 }

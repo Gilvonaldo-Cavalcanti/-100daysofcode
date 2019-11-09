@@ -10,11 +10,11 @@
 
   <div class="fundo-registro">
 
-    <div class="circulo" (click)="novoRegistroTreino()">
+    <div class="circulo" (click)="registrarTreino()">
       <img src="/assets/img/halter.png">
     </div>
   
-    <div class="descanso" (click)="descanso()">
+    <div class="descanso" (click)="registrarDescanso()">
       <img src="/assets/img/descanso.png">
     </div>
 
@@ -25,7 +25,7 @@
     <h5 class="ion-text-center">Conclusão Semanal</h5>
     <ion-row>
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Domingo'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.domingo ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Domingo
@@ -34,7 +34,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Segunda'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.segunda ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Segunda
@@ -43,7 +43,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Terca'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.terca ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Terça
@@ -52,7 +52,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Quarta'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.quarta ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Quarta
@@ -61,7 +61,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Quinta'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.quinta ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Quinta
@@ -70,7 +70,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Sexta'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.sexta ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Sexta
@@ -79,7 +79,7 @@
       </ion-col>
 
       <ion-col>
-        <ion-icon name="checkmark-circle" [color]="semana['Sabado'] ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
+        <ion-icon name="checkmark-circle" [color]="conclusaoSemanal.sabado ? 'cor-conclusao-semanal' : 'secundary'"></ion-icon>
         <ion-label>
           <div class="dia">
             Sábado
