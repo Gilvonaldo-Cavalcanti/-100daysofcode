@@ -223,3 +223,11 @@
 **Comentários:** Exibição apenas das avaliações e fichas feitas por o usuário criador; ion-menu desabilitado após o logout; bloqueio do modo paisagem no login e exibição das avaliações arquivadas em uma página à parte.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 030: 07 de Novembro de 2019
+
+**Progresso do dia:** Implementação na aba progresso.
+
+**Comentários:** Adição do plugin screen-orientation, botão para registrar os dias de descanso e backgroud-image em aba2, e implementação do método salvar descanso.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
