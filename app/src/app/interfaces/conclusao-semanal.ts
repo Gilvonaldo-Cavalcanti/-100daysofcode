@@ -1,4 +1,5 @@
 export interface ConclusaoSemanal {
+    id?: string,
     userId?: string,
     domingo?: boolean,
     segunda?: boolean,

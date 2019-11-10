@@ -38,9 +38,9 @@ export class RegistroTreinoService {
       map(actions => {
         return actions.map(a => {
           const data = a.payload.doc.data();
-          const userId = a.payload.doc.id;
+          const id = a.payload.doc.id;
 
-          return { userId, ...data };
+          return { id, ...data };
         });
       })
     )
@@ -51,7 +51,7 @@ export class RegistroTreinoService {
   }
 
   updateConclusaoSemanal(conclusaoSemanal: ConclusaoSemanal){
-    return this.conclusaoSemanalCollection.doc(conclusaoSemanal.userId).update(conclusaoSemanal);
+    return this.conclusaoSemanalCollection.doc<ConclusaoSemanal>(conclusaoSemanal.id).update(conclusaoSemanal);
   }
 
   addRegistroDeTreino(registroTreinos: Registrotreino){
@@ -59,7 +59,8 @@ export class RegistroTreinoService {
   }
 
   updateRegistroDeTreino(registroTreinos: Registrotreino){
-    return this.registroDeTreinoCollection.doc(registroTreinos.id).update(registroTreinos);
+    console.log("O userId passado foi esse => ",registroTreinos.id);
+    return this.registroDeTreinoCollection.doc<Registrotreino>(registroTreinos.id).update(registroTreinos);
   }
 
   getRegistroDeTreinos(id: string) {

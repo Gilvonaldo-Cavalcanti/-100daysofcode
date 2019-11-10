@@ -14,7 +14,7 @@ import { ConclusaoSemanal } from 'src/app/interfaces/conclusao-semanal';
 })
 export class Tab2Page implements OnInit {
 
-  
+
   private registrosDeTreinos = new Array<Registrotreino>();
   private conclusoesSemanais = new Array<ConclusaoSemanal>();
 
@@ -24,45 +24,40 @@ export class Tab2Page implements OnInit {
     "Quarta": false, "Quinta": false, "Sexta": false, "Sabado": false
   };
 
-  private registTreinosSubscription: Subscription;  
-  
+  private registTreinosSubscription: Subscription;
+
   private registreino: Registrotreino = {};
   private conclusaoSemanal: ConclusaoSemanal = {};
-  
+
   private dataAtual: Date = new Date();
 
-  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService, private authService: AuthService,) {
+  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService, private authService: AuthService, ) {
 
-    this.registTreinosSubscription = this.registreinoService.getRegistrosDeTreinos().subscribe(data => {    
+    this.registTreinosSubscription = this.registreinoService.getRegistrosDeTreinos().subscribe(data => {
       this.registrosDeTreinos = data;
+      if (data.length > 0) {
+        for (let i of data) {
+          if (i.userId == this.authService.getAuth().currentUser.uid) {
+            this.registreino = i;
+          }
+        }
+      }
     });
-
-    this.registTreinosSubscription = this.registreinoService.getConclusaoSemanal().subscribe(data => {    
+    this.registTreinosSubscription = this.registreinoService.getConclusaoSemanal().subscribe(data => {
       this.conclusoesSemanais = data;
+      if (data.length > 0) {
+        for (let i of data) {
+          if (i.userId == this.authService.getAuth().currentUser.uid) {
+            this.conclusaoSemanal = i;
+          }
+        }
+      }
     });
-    
-    if (this.registrosDeTreinos.length != 0){
-      for (let i of this.registrosDeTreinos){
-        if (i.userId == this.authService.getAuth().currentUser.uid){
-          this.registreino = i;
-        }
-      }
-    }
-
-    if (this.conclusoesSemanais.length != 0){
-      for (let i of this.conclusoesSemanais){
-        if (i.userId == this.authService.getAuth().currentUser.uid){
-          this.conclusaoSemanal = i;
-        }
-      }
-    }
-
-    
   }
 
   ngOnInit() { }
 
-  atualizarConclusaoSemanal(){
+  atualizarConclusaoSemanal() {
     this.conclusaoSemanal.domingo = this.semana["Domingo"];
     this.conclusaoSemanal.segunda = this.semana["Segunda"];
     this.conclusaoSemanal.terca = this.semana["Terca"];
@@ -72,50 +67,66 @@ export class Tab2Page implements OnInit {
     this.conclusaoSemanal.sabado = this.semana["Sabado"];
   }
 
-  async registrarTreino(){
-    
+  async registrarTreino() {
+
     let opc = await this.presentAlert();
-    
     if (opc) {
-
-      this.atualizarPontuacao();
-      this.atualizarNivel();
-
-      if (this.registrosDeTreinos.length == 0){
-        this.registreino.userId = this.authService.getAuth().currentUser.uid;
-        this.registreinoService.addRegistroDeTreino(this.registreino);
-      } else {
-        for (let a of this.registrosDeTreinos){
-          if (a.userId == this.authService.getAuth().currentUser.uid){
-            this.registreinoService.updateRegistroDeTreino(this.registreino);
+      if (this.registreino.ultimoDiaDeTreino != this.dataAtual.toLocaleDateString()) {
+        this.registreino.ultimoDiaDeTreino = this.dataAtual.toLocaleDateString();
+        if (this.registrosDeTreinos.length == 0 || this.registrosDeTreinos == null) {
+          this.atualizarPontuacao();
+          this.atualizarNivel();
+          this.atualizarOfensiva();
+          this.registrarConclusaoSemanal();
+          this.registreino.userId = this.authService.getAuth().currentUser.uid;
+          this.registreinoService.addRegistroDeTreino(this.registreino);
+        } else {
+          for (let a of this.registrosDeTreinos) {
+            if (a.userId == this.authService.getAuth().currentUser.uid) {
+              this.atualizarPontuacao();
+              this.atualizarNivel();
+              this.atualizarOfensiva();
+              this.registrarConclusaoSemanal();
+              this.registreinoService.updateRegistroDeTreino(this.registreino);
+            } else {
+              this.registrarConclusaoSemanal();
+              this.atualizarPontuacao();
+              this.atualizarNivel();
+              this.atualizarOfensiva();
+              this.registreino.userId = this.authService.getAuth().currentUser.uid;
+              this.registreinoService.addRegistroDeTreino(this.registreino);
+            }
           }
         }
+      } else {
+        this.presentToast("Você já treinou hoje!");
       }
-      this.registrarConclusaoSemanal();
     }
-
   }
 
-  registrarConclusaoSemanal(){
-    if (this.conclusoesSemanais.length == 0){
-      
+  registrarConclusaoSemanal() {
+    if (this.conclusoesSemanais.length == 0) {
       this.semana[this.dias[this.dataAtual.getDay()]] = true;
       this.atualizarConclusaoSemanal();
       this.conclusaoSemanal.userId = this.authService.getAuth().currentUser.uid;
       this.registreinoService.addConclusaoSemanal(this.conclusaoSemanal);
-
     } else {
       for (let i of this.conclusoesSemanais) {
-        if (i.userId == this.authService.getAuth().currentUser.uid){
+        if (i.userId == this.authService.getAuth().currentUser.uid) {
           this.updateSemana(this.dias[this.dataAtual.getDay()]);
           this.registreinoService.updateConclusaoSemanal(this.conclusaoSemanal);
+        } else {
+          this.semana[this.dias[this.dataAtual.getDay()]] = true;
+          this.atualizarConclusaoSemanal();
+          this.conclusaoSemanal.userId = this.authService.getAuth().currentUser.uid;
+          this.registreinoService.addConclusaoSemanal(this.conclusaoSemanal);
         }
       }
     }
   }
 
-  updateSemana(dia: string){
-    switch (dia){
+  updateSemana(dia: string) {
+    switch (dia) {
       case "Domingo": {
         this.conclusaoSemanal.domingo = true;
         break;
@@ -144,14 +155,38 @@ export class Tab2Page implements OnInit {
   }
 
 
-  registrarDescanso(){
+  registrarDescanso() {
+    if (this.registreino.ultimoDiaDeTreino != this.dataAtual.toLocaleDateString()) {
+      this.registreino.ultimoDiaDeTreino = this.dataAtual.toLocaleDateString();
+      if (this.registreino.diasDeDescanso == 0 || this.registreino.diasDeDescanso == null) {
+        this.registreino.diasDeDescanso = 1;
+        this.registrarConclusaoSemanal();
+        this.registreinoService.addRegistroDeTreino(this.registreino);
+      } else {
+        this.registreino.diasDeDescanso += 1;
+        this.registrarConclusaoSemanal();
+        this.registreinoService.updateRegistroDeTreino(this.registreino);
+      }
+    } else {
+      this.presentToast("Você já treinou hoje, aproveite seu descanso!")
+    }
+  }
 
+  atualizarOfensiva() {
+    var ofen: Number = this.registreino.ofensiva;
+    var ontem = new Date;
+    ontem.setDate(this.dataAtual.getDate() - 1);
+    if (ofen == null) {
+      this.registreino.ofensiva = 1;
+    } else if (this.registreino.ultimoDiaDeTreino == ontem.toLocaleDateString()) {
+      this.registreino.ofensiva += 1;
+    } else {
+      this.registreino.ofensiva = 1;
+    }
   }
 
   atualizarPontuacao() {
-
     var pont: Number = this.registreino.pontuacao;
-
     if (pont == null) {
       this.registreino.pontuacao = 20;
     } else {
@@ -201,9 +236,5 @@ export class Tab2Page implements OnInit {
       }).then(alert => alert.present());
     });
   }
-
-
-
-  
 
 }
