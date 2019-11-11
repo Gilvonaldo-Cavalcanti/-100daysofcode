@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="menu-superior">
+    <ion-title>Recuperar Senha</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <div class="container">
+
+    <div class="formulario">
+      <ion-item>
+        <ion-input placeholder="E-Mail" [(ngModel)]="email"></ion-input>
+      </ion-item>
+
+      <ion-button class="ion-margin-top" color="light" expand="block" (click)="enviarEmail()">
+        Enviar
+      </ion-button>
+
+    </div>
+
+  </div>
+
+</ion-content>

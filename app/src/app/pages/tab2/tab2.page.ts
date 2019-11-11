@@ -25,6 +25,7 @@ export class Tab2Page implements OnInit {
   };
 
   private registTreinosSubscription: Subscription;
+  private registSemanalSubscription: Subscription;
 
   private registreino: Registrotreino = {};
   private conclusaoSemanal: ConclusaoSemanal = {};
@@ -34,28 +35,40 @@ export class Tab2Page implements OnInit {
   constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService, private authService: AuthService, ) {
 
     this.registTreinosSubscription = this.registreinoService.getRegistrosDeTreinos().subscribe(data => {
-      this.registrosDeTreinos = data;
       if (data.length > 0) {
         for (let i of data) {
           if (i.userId == this.authService.getAuth().currentUser.uid) {
             this.registreino = i;
           }
         }
+      } else {
+        this.registrosDeTreinos = data;
       }
     });
-    this.registTreinosSubscription = this.registreinoService.getConclusaoSemanal().subscribe(data => {
-      this.conclusoesSemanais = data;
+    this.registSemanalSubscription = this.registreinoService.getConclusaoSemanal().subscribe(data => {
       if (data.length > 0) {
         for (let i of data) {
           if (i.userId == this.authService.getAuth().currentUser.uid) {
             this.conclusaoSemanal = i;
-          }
+         }
         }
+      } else {
+        this.conclusoesSemanais = data;
       }
     });
+    
   }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    
+   }
+
+   
+
+  ngOnDestroy() {
+    this.registTreinosSubscription.unsubscribe();
+    this.registSemanalSubscription.unsubscribe();
+  }
 
   atualizarConclusaoSemanal() {
     this.conclusaoSemanal.domingo = this.semana["Domingo"];
@@ -78,6 +91,7 @@ export class Tab2Page implements OnInit {
           this.atualizarNivel();
           this.atualizarOfensiva();
           this.registrarConclusaoSemanal();
+          this.atualizarDiasDeTreino();
           this.registreino.userId = this.authService.getAuth().currentUser.uid;
           this.registreinoService.addRegistroDeTreino(this.registreino);
         } else {
@@ -86,12 +100,14 @@ export class Tab2Page implements OnInit {
               this.atualizarPontuacao();
               this.atualizarNivel();
               this.atualizarOfensiva();
+              this.atualizarDiasDeTreino();
               this.registrarConclusaoSemanal();
               this.registreinoService.updateRegistroDeTreino(this.registreino);
             } else {
               this.registrarConclusaoSemanal();
               this.atualizarPontuacao();
               this.atualizarNivel();
+              this.atualizarDiasDeTreino();
               this.atualizarOfensiva();
               this.registreino.userId = this.authService.getAuth().currentUser.uid;
               this.registreinoService.addRegistroDeTreino(this.registreino);
@@ -178,7 +194,7 @@ export class Tab2Page implements OnInit {
     ontem.setDate(this.dataAtual.getDate() - 1);
     if (ofen == null) {
       this.registreino.ofensiva = 1;
-    } else if (this.registreino.ultimoDiaDeTreino == ontem.toLocaleDateString()) {
+    } else if (this.registreino.ultimoDiaDeTreino == ""+ontem.toLocaleDateString()) {
       this.registreino.ofensiva += 1;
     } else {
       this.registreino.ofensiva = 1;
@@ -191,6 +207,15 @@ export class Tab2Page implements OnInit {
       this.registreino.pontuacao = 20;
     } else {
       this.registreino.pontuacao += 20;
+    }
+  }
+
+  atualizarDiasDeTreino() {
+    var pont: Number = this.registreino.totalDeDiasDeTreino;
+    if (pont == null) {
+      this.registreino.totalDeDiasDeTreino = 1;
+    } else {
+      this.registreino.totalDeDiasDeTreino += 1;
     }
   }
 
@@ -222,7 +247,7 @@ export class Tab2Page implements OnInit {
     return new Promise((resolve: any, reject: any) => {
       this.alertController.create({
         header: 'Registro de Treinos',
-        message: 'Clique ok para confirmar!</br>Ao confirmar você receberá as seguintes contuações</br>20 pontos para subir de nível',
+        message: 'Clique Ok para confirmar!</br>Caso ainda não registrou treino hoje, ao confirmar você receberá 20 pontos para subir de nível.',
         buttons: [
           {
             text: 'Cancelar',

@@ -34,6 +34,11 @@ export class Tab3Page implements OnInit {
   ngOnInit() {
   }
 
+
+  ngOnDestroy() {
+    this.avaliacaoSubscription.unsubscribe();
+  }
+
   private presentAlert(): boolean | Promise<boolean> | Observable<boolean> {
 
     return new Promise((resolve: any, reject: any) => {

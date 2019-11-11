@@ -9,4 +9,25 @@
 
 <ion-content>
 
+  <ion-list>
+    <ion-item>
+      <ion-col>Nome do usuário:</ion-col>
+      <ion-col slot="end">{{ nome }}</ion-col>
+    </ion-item>
+    <ion-item>
+      <ion-col>E-Mail:</ion-col>
+      <ion-col slot="end">{{ email }}</ion-col>
+    </ion-item>
+  </ion-list>
+
+
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-button (click)="excluirMinhaConta()" expand="block" color="danger">
+          Excluir minha conta
+      </ion-button>  
+    </ion-toolbar>
+  
+  </ion-footer>

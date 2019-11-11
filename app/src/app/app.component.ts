@@ -12,6 +12,8 @@ import { MenuController } from '@ionic/angular';
 })
 export class AppComponent {
 
+  private nomeUsuario: string;
+
   constructor(
     private alertController: AlertController,
     public menuCtrl: MenuController,
@@ -21,6 +23,7 @@ export class AppComponent {
     private authService: AuthService,
   ) {
     this.initializeApp();
+
   }
 
   initializeApp() {
