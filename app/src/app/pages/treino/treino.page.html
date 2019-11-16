@@ -43,9 +43,10 @@
   <ion-button expand="full" color="light" (click)="addControl()">Adicionar Exercício</ion-button>
 
   <ion-list>
-    <ion-item>
-      <ion-textarea [(ngModel)]="treino.descricao" placeHolder="Anotações"></ion-textarea>
-    </ion-item>
+    <form [formGroup]="descricao">
+        <ion-textarea [(ngModel)]="treino.descricao" placeHolder="Anotações"></ion-textarea>
+    </form>
+
   </ion-list>
 
 </ion-content>

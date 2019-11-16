@@ -26,6 +26,7 @@ export class TreinoPage implements OnInit {
   /** Add/Remove dinamicamente campos */
   public myForm: FormGroup;
   private numExercicios: number = 1;
+  public descricao: FormGroup;
 
   /** Array de chaves */
   private chavesExercicios: Array<string> = new Array;
@@ -43,6 +44,9 @@ export class TreinoPage implements OnInit {
       exercicio: ['', Validators.required],
     });
     
+    this.descricao = this.formBuilder.group({
+      descricao: ['', Validators.required]
+    });
 
     this.treino.exercicios = [""];
 
@@ -65,6 +69,9 @@ export class TreinoPage implements OnInit {
 
 
   async salvarTreino() {
+    
+    console.log("===> ",this.descricao.getRawValue);
+    
     await this.presentLoading();
 
     this.treino.userId = this.authService.getAuth().currentUser.uid;
@@ -73,13 +80,15 @@ export class TreinoPage implements OnInit {
 
     } else {
       
+
+      this.treino.arquivado = false;
+      this.treino.descricao = this.descricao.value[0];
+      console.log("===> ",this.treino.descricao);
      
       for (let i of this.chavesExercicios){
         this.treino.exercicios.push(this.myForm.value[i]);
       }
       
-      this.treino.arquivado = false;
-
       try {
         await this.treinoService.addTreino(this.treino);
         await this.loading.dismiss();
