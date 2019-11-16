@@ -4,7 +4,6 @@ import { LoadingController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TreinoService } from 'src/app/services/treino.service';
-import { Exercicio } from 'src/app/interfaces/exercicio';
 import { Router } from '@angular/router';
 
 
@@ -19,14 +18,11 @@ export class TreinoPage implements OnInit {
   private loading: any;
   private treinoId: string = null;
 
-  /* Adição dos exercícios vinculados a fixa de treino */
-  private exercicio: Exercicio = {};
-  private exercicios: Array<string> = [];
 
   /** Add/Remove dinamicamente campos */
   public myForm: FormGroup;
-  private numExercicios: number = 1;
-  public descricao: FormGroup;
+  private numExercicios: number = 0;
+  private chave: string;
 
   /** Array de chaves */
   private chavesExercicios: Array<string> = new Array;
@@ -43,13 +39,9 @@ export class TreinoPage implements OnInit {
     this.myForm = this.formBuilder.group({
       exercicio: ['', Validators.required],
     });
-    
-    this.descricao = this.formBuilder.group({
-      descricao: ['', Validators.required]
-    });
 
     this.treino.exercicios = [""];
-
+    this.chavesExercicios.push("exercicio");
   }
 
   ngOnInit() {
@@ -57,21 +49,24 @@ export class TreinoPage implements OnInit {
 
 
   addControl() {
+    
+    this.chave = 'exercicio' + this.numExercicios;
+    this.chavesExercicios.push(this.chave);
     this.numExercicios++;
-    let chave = 'exercicio' + this.numExercicios;
-    this.chavesExercicios.push(chave);
-    this.myForm.addControl(chave, new FormControl('', Validators.required));
+    this.myForm.addControl(this.chave, new FormControl('', Validators.required));
+    
   }
+
   removeControl(control) {
+    this.numExercicios--;
+    this.chavesExercicios.pop();
     this.myForm.removeControl(control.key);
   }
 
 
 
   async salvarTreino() {
-    
-    console.log("===> ",this.descricao.getRawValue);
-    
+      
     await this.presentLoading();
 
     this.treino.userId = this.authService.getAuth().currentUser.uid;
@@ -79,16 +74,13 @@ export class TreinoPage implements OnInit {
     if (this.treinoId) {
 
     } else {
-      
-
-      this.treino.arquivado = false;
-      this.treino.descricao = this.descricao.value[0];
-      console.log("===> ",this.treino.descricao);
      
+      this.treino.arquivado = false;
+      
       for (let i of this.chavesExercicios){
         this.treino.exercicios.push(this.myForm.value[i]);
       }
-      
+ 
       try {
         await this.treinoService.addTreino(this.treino);
         await this.loading.dismiss();
