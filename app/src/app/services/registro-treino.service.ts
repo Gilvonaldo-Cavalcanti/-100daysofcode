@@ -14,7 +14,7 @@ export class RegistroTreinoService {
   private registroDeTreinoCollection: AngularFirestoreCollection<Registrotreino>;
   private conclusaoSemanalCollection: AngularFirestoreCollection<ConclusaoSemanal>;
 
-  constructor(private afs: AngularFirestore,private authService: AuthService,) {
+  constructor(private afs: AngularFirestore, private authService: AuthService) {
     this.registroDeTreinoCollection = this.afs.collection<Registrotreino>('RegistroTreinos');
     this.conclusaoSemanalCollection = this.afs.collection<ConclusaoSemanal>('conclusao-semanal');
 
@@ -46,21 +46,20 @@ export class RegistroTreinoService {
     )
   }
 
-  addConclusaoSemanal(conclusaoSemanal: ConclusaoSemanal){
+  addConclusaoSemanal(conclusaoSemanal: ConclusaoSemanal){   
     return this.conclusaoSemanalCollection.add(conclusaoSemanal);   
   }
 
-  updateConclusaoSemanal(conclusaoSemanal: ConclusaoSemanal){
-    return this.conclusaoSemanalCollection.doc<ConclusaoSemanal>(conclusaoSemanal.id).update(conclusaoSemanal);
+  updateConclusaoSemanal(id: string, conclusaoSemanal: ConclusaoSemanal){
+    return this.conclusaoSemanalCollection.doc(id).update(conclusaoSemanal);
   }
 
   addRegistroDeTreino(registroTreinos: Registrotreino){
     return this.registroDeTreinoCollection.add(registroTreinos);
   }
 
-  updateRegistroDeTreino(registroTreinos: Registrotreino){
-    console.log("O userId passado foi esse => ",registroTreinos.id);
-    return this.registroDeTreinoCollection.doc<Registrotreino>(registroTreinos.id).update(registroTreinos);
+  updateRegistroDeTreino(id: string, registroTreinos: Registrotreino){
+    return this.registroDeTreinoCollection.doc<Registrotreino>(id).update(registroTreinos);
   }
 
   getRegistroDeTreinos(id: string) {

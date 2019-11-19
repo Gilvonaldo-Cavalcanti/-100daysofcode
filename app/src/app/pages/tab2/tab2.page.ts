@@ -5,6 +5,8 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { RegistroTreinoService } from 'src/app/services/registro-treino.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ConclusaoSemanal } from 'src/app/interfaces/conclusao-semanal';
+import { ActivatedRoute } from '@angular/router';
+
 
 
 @Component({
@@ -30,40 +32,54 @@ export class Tab2Page implements OnInit {
   private registreino: Registrotreino = {};
   private conclusaoSemanal: ConclusaoSemanal = {};
 
+  private conclusaoSemanalId: string;
+  private registroDeTreinosId: string;
+
   private dataAtual: Date = new Date();
 
-  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService, private authService: AuthService, ) {
+  constructor(private alertController: AlertController, private toastCtrl: ToastController, private registreinoService: RegistroTreinoService, private authService: AuthService, private activatedRoute: ActivatedRoute) {
 
     this.registTreinosSubscription = this.registreinoService.getRegistrosDeTreinos().subscribe(data => {
       if (data.length > 0) {
         for (let i of data) {
+
           if (i.userId == this.authService.getAuth().currentUser.uid) {
             this.registreino = i;
           }
         }
-      } else {
-        this.registrosDeTreinos = data;
       }
     });
     this.registSemanalSubscription = this.registreinoService.getConclusaoSemanal().subscribe(data => {
       if (data.length > 0) {
         for (let i of data) {
+
           if (i.userId == this.authService.getAuth().currentUser.uid) {
             this.conclusaoSemanal = i;
-         }
+            
+          }
         }
-      } else {
-        this.conclusoesSemanais = data;
       }
     });
     
+    //Instância do Id do objeto conclusão semanal
+    if (this.conclusaoSemanal != null){
+      this.registreinoService.getConclusaoSemanal().subscribe(id => {
+        this.conclusaoSemanalId = id[0].id;
+      });
+    }
+
+    //Instância do Id do objeto registro de treinos
+    if (this.registreino != null){
+      this.registreinoService.getRegistrosDeTreinos().subscribe(id => {
+        this.registroDeTreinosId = id[0].id;
+      });
+    }
+
   }
 
-  ngOnInit() { 
-    
-   }
+  ngOnInit() {
 
-   
+  }
 
   ngOnDestroy() {
     this.registTreinosSubscription.unsubscribe();
@@ -80,13 +96,15 @@ export class Tab2Page implements OnInit {
     this.conclusaoSemanal.sabado = this.semana["Sabado"];
   }
 
-  async registrarTreino() {
 
-    let opc = await this.presentAlert();
+  async registrarTreino() {
+    
+    let opc = await this.presentAlert('Registro de Treinos');
     if (opc) {
       if (this.registreino.ultimoDiaDeTreino != this.dataAtual.toLocaleDateString()) {
-        this.registreino.ultimoDiaDeTreino = this.dataAtual.toLocaleDateString();
-        if (this.registrosDeTreinos.length == 0 || this.registrosDeTreinos == null) {
+
+        if (this.registreino == {}) {
+
           this.atualizarPontuacao();
           this.atualizarNivel();
           this.atualizarOfensiva();
@@ -95,25 +113,16 @@ export class Tab2Page implements OnInit {
           this.registreino.userId = this.authService.getAuth().currentUser.uid;
           this.registreinoService.addRegistroDeTreino(this.registreino);
         } else {
-          for (let a of this.registrosDeTreinos) {
-            if (a.userId == this.authService.getAuth().currentUser.uid) {
-              this.atualizarPontuacao();
-              this.atualizarNivel();
-              this.atualizarOfensiva();
-              this.atualizarDiasDeTreino();
-              this.registrarConclusaoSemanal();
-              this.registreinoService.updateRegistroDeTreino(this.registreino);
-            } else {
-              this.registrarConclusaoSemanal();
-              this.atualizarPontuacao();
-              this.atualizarNivel();
-              this.atualizarDiasDeTreino();
-              this.atualizarOfensiva();
-              this.registreino.userId = this.authService.getAuth().currentUser.uid;
-              this.registreinoService.addRegistroDeTreino(this.registreino);
-            }
-          }
+
+          this.atualizarPontuacao();
+          this.atualizarNivel();
+          this.atualizarOfensiva();
+          this.atualizarDiasDeTreino();
+          this.registrarConclusaoSemanal();
+          this.registreinoService.updateRegistroDeTreino(this.registroDeTreinosId, this.registreino);
         }
+        this.registreino.ultimoDiaDeTreino = this.dataAtual.toLocaleDateString();
+
       } else {
         this.presentToast("Você já treinou hoje!");
       }
@@ -121,24 +130,19 @@ export class Tab2Page implements OnInit {
   }
 
   registrarConclusaoSemanal() {
-    if (this.conclusoesSemanais.length == 0) {
-      this.semana[this.dias[this.dataAtual.getDay()]] = true;
-      this.atualizarConclusaoSemanal();
-      this.conclusaoSemanal.userId = this.authService.getAuth().currentUser.uid;
-      this.registreinoService.addConclusaoSemanal(this.conclusaoSemanal);
+
+    this.atualizarConclusaoSemanal();
+    this.conclusaoSemanal.userId = this.authService.getAuth().currentUser.uid;
+    this.updateSemana(this.dias[this.dataAtual.getDay()]);
+
+    if (this.conclusaoSemanal != null){
+      this.registreinoService.updateConclusaoSemanal(this.conclusaoSemanalId, this.conclusaoSemanal);
     } else {
-      for (let i of this.conclusoesSemanais) {
-        if (i.userId == this.authService.getAuth().currentUser.uid) {
-          this.updateSemana(this.dias[this.dataAtual.getDay()]);
-          this.registreinoService.updateConclusaoSemanal(this.conclusaoSemanal);
-        } else {
-          this.semana[this.dias[this.dataAtual.getDay()]] = true;
-          this.atualizarConclusaoSemanal();
-          this.conclusaoSemanal.userId = this.authService.getAuth().currentUser.uid;
-          this.registreinoService.addConclusaoSemanal(this.conclusaoSemanal);
-        }
-      }
+
+      this.registreinoService.addConclusaoSemanal(this.conclusaoSemanal);
     }
+    
+
   }
 
   updateSemana(dia: string) {
@@ -167,24 +171,30 @@ export class Tab2Page implements OnInit {
         this.conclusaoSemanal.sexta = true;
         break;
       }
+      case "Sabado": {
+        this.conclusaoSemanal.sabado = true;
+        break;
+      }
     }
   }
 
-
-  registrarDescanso() {
-    if (this.registreino.ultimoDiaDeTreino != this.dataAtual.toLocaleDateString()) {
-      this.registreino.ultimoDiaDeTreino = this.dataAtual.toLocaleDateString();
-      if (this.registreino.diasDeDescanso == 0 || this.registreino.diasDeDescanso == null) {
-        this.registreino.diasDeDescanso = 1;
-        this.registrarConclusaoSemanal();
-        this.registreinoService.addRegistroDeTreino(this.registreino);
+  async registrarDescanso() {
+    let opc = await this.presentAlert('Descansar');
+    if (opc) {
+      if (this.registreino.ultimoDiaDeTreino != this.dataAtual.toLocaleDateString()) {
+        this.registreino.ultimoDiaDeTreino = this.dataAtual.toLocaleDateString();
+        if (this.registreino.diasDeDescanso == 0 || this.registreino.diasDeDescanso == null) {
+          this.registreino.diasDeDescanso = 1;
+          this.registrarConclusaoSemanal();
+          this.registreinoService.addRegistroDeTreino(this.registreino);
+        } else {
+          this.registreino.diasDeDescanso += 1;
+          this.registrarConclusaoSemanal();
+          this.registreinoService.updateRegistroDeTreino(this.registroDeTreinosId, this.registreino);
+        }
       } else {
-        this.registreino.diasDeDescanso += 1;
-        this.registrarConclusaoSemanal();
-        this.registreinoService.updateRegistroDeTreino(this.registreino);
+        this.presentToast("Você já treinou hoje, aproveite seu descanso!")
       }
-    } else {
-      this.presentToast("Você já treinou hoje, aproveite seu descanso!")
     }
   }
 
@@ -194,7 +204,7 @@ export class Tab2Page implements OnInit {
     ontem.setDate(this.dataAtual.getDate() - 1);
     if (ofen == null) {
       this.registreino.ofensiva = 1;
-    } else if (this.registreino.ultimoDiaDeTreino == ""+ontem.toLocaleDateString()) {
+    } else if (this.registreino.ultimoDiaDeTreino == "" + ontem.toLocaleDateString()) {
       this.registreino.ofensiva += 1;
     } else {
       this.registreino.ofensiva = 1;
@@ -242,12 +252,12 @@ export class Tab2Page implements OnInit {
     toast.present();
   }
 
-  private presentAlert(): boolean | Promise<boolean> | Observable<boolean> {
+  private presentAlert(msg: string): boolean | Promise<boolean> | Observable<boolean> {
 
     return new Promise((resolve: any, reject: any) => {
       this.alertController.create({
-        header: 'Registro de Treinos',
-        message: 'Clique Ok para confirmar!</br>Caso ainda não registrou treino hoje, ao confirmar você receberá 20 pontos para subir de nível.',
+        header: msg,
+        message: 'Clique Ok para confirmar!',
         buttons: [
           {
             text: 'Cancelar',
