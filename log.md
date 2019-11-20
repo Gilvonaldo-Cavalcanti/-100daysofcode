@@ -231,3 +231,51 @@
 **Comentários:** Adição do plugin screen-orientation, botão para registrar os dias de descanso e backgroud-image em aba2, e implementação do método salvar descanso.
 
 **Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 031: 08 de Novembro de 2019
+
+**Progresso do dia:** Implementação na aba progresso.
+
+**Comentários:** Continuaço da implementação dos registros de treinamentos e descansos.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 032: 09 de Novembro de 2019
+
+**Progresso do dia:** Implementação na aba progresso.
+
+**Comentários:** Finalização dos registros de treinamentos e estátisticas.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 033: 10 de Novembro de 2019
+
+**Progresso do dia:** Ajustes finais no app.
+
+**Comentários:** Ajustes finais e geração do apk.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
+
+### Dia 034: 11 de Novembro de 2019
+
+**Progresso do dia:** Estudos do framework Flutter.
+
+**Comentários:** Configuração do ambiente e estudo da documentação.
+
+**Link**: 
+
+### Dia 035: 15 de Novembro de 2019
+
+**Progresso do dia:** Projeto Teste.
+
+**Comentários:** Criação de um app para explorar SQLite em Ionic 4.
+
+**Link**: [Testes de APIs](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/Testes%20de%20APIs)
+
+### Dia 036: 18 de Novembro de 2019
+
+**Progresso do dia:** Estudos da API firebase.
+
+**Comentários:** Estudos da API firebase com Angular, Ionic.
+
+**Link**: [App](https://github.com/Gilvonaldo-Cavalcanti/-100daysofcode/tree/master/app)
